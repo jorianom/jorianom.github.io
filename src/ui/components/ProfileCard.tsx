@@ -1,7 +1,6 @@
 import Image from "next/image"
 import { SocialList } from "./buttons/SocialList"
 import { AvailabilityBadge } from "./AvailabilityBadge"
-import { basePath } from "../../../next.config"
 import Link from "next/link"
 
 export const ProfileCard = () => {
@@ -52,7 +51,7 @@ export const ProfileCard = () => {
                     <div className="relative">
                         <div className="relative h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 overflow-hidden rounded-full border-4 border-white/10 shadow-2xl bg-slate-800">
                             <Image
-                                src={basePath + "/photo_.webp"}
+                                src={"/photo_.webp"}
                                 fill
                                 sizes="(max-width: 640px) 192px, (max-width: 1024px) 256px, 320px"
                                 priority

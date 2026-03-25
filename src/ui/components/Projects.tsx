@@ -1,7 +1,6 @@
 'use client'
 
 import Image from "next/image"
-import { basePath } from "../../../next.config"
 import { useCallback, useEffect, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
 import { IoChevronBack, IoChevronForward } from "react-icons/io5"
@@ -147,7 +146,7 @@ export const Projects = () => {
                                 className="absolute inset-0 block group"
                             >
                                 <Image
-                                    src={basePath + project.image}
+                                    src={project.image}
                                     fill
                                     sizes="(max-width: 1024px) 100vw, 66vw"
                                     alt={project.title}

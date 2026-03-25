@@ -8,8 +8,6 @@ import {
     IoCloseOutline,
     IoEyeOutline,
 } from "react-icons/io5";
-import { basePath } from "../../../next.config";
-
 /* ── Types ─────────────────────────────────────────── */
 
 type EducationItem = {
@@ -155,7 +153,7 @@ export const Education = () => {
                                                 onClick={() =>
                                                     setViewer({
                                                         title: item.title,
-                                                        src: basePath + item.certificate!,
+                                                        src: item.certificate!,
                                                     })
                                                 }
                                                 className="flex items-center gap-1.5 text-[11px] text-primary font-mono uppercase tracking-wider
