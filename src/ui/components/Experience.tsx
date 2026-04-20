@@ -1,7 +1,7 @@
 const experiences = [
   {
     company: "Siigo",
-    role: "Desarrollador Full Stack",
+    role: "Desarrollador Full Stack Ssr",
     period: "03/2021 – Actual",
     achievements: [
       "Automatización de procesos de negocio mediante scripts en JavaScript sobre el ERP Oracle NetSuite, orientados a la mejora de la gestión de la información, reducción de carga operativa y fortalecimiento de la trazabilidad y consistencia de datos.",
