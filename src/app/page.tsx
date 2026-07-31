@@ -11,8 +11,14 @@ import Badge from "@/ui/components/Badge";
 export default function Home() {
   return (
     <>
+      <a
+        href="#main-content"
+        className="pointer-events-none absolute -top-10 left-4 z-[70] rounded-lg bg-primary px-4 py-2 text-sm font-bold text-white opacity-0 shadow-lg shadow-primary/20 transition-all focus:pointer-events-auto focus:top-4 focus:opacity-100"
+      >
+        Saltar al contenido principal
+      </a>
       <Navbar />
-      <main className="mx-auto w-full max-w-7xl px-6">
+      <main id="main-content" className="mx-auto w-full max-w-7xl px-6">
         <ProfileCard />
         <TechStack />
         <Projects />

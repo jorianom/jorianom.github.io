@@ -59,9 +59,9 @@ export const TechStack = () => {
 
                             <div className="flex items-start justify-between gap-4">
                                 <div className="flex flex-col gap-3">
-                                    <h4 className="text-xs uppercase tracking-widest text-primary font-bold">
+                                    <h3 className="text-xs uppercase tracking-widest text-primary font-bold">
                                         {cat.title}
-                                    </h4>
+                                    </h3>
                                     <p className="text-slate-300 text-sm font-mono leading-relaxed">
                                         {cat.techs}
                                     </p>

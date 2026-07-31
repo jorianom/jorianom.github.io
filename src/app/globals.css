@@ -30,39 +30,40 @@
 }
 
 body {
-	background: var(--background);
 	background-color: var(--color-bg-dark);
-	color: var(--foreground);
-	font-family: Arial, Helvetica, sans-serif;
+	color: var(--color-text-light);
 }
 
-.bg-back {
-	background: #1b1b1b;
-	background: linear-gradient(
-		45deg,
-		rgba(27, 27, 27, 1) 0%,
-		rgba(52, 31, 28, 1) 50%,
-		rgba(139, 46, 30, 1) 75%,
-		rgba(230, 62, 33, 1) 100%
-	);
+*:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
 }
-.bg-back-inv {
-	background: #e63e21;
-	background: linear-gradient(
-		45deg,
-		rgba(230, 62, 33, 1) 0%,
-		rgba(139, 46, 30, 1) 25%,
-		rgba(52, 31, 28, 1) 50%,
-		rgba(27, 27, 27, 1) 100%
-	);
+
+@keyframes availability-float {
+	0%, 100% { transform: translateY(0); }
+	16.67% { transform: translateY(-6px); }
+	33.33% { transform: translateY(0); }
 }
-.bg-lineal {
-	background: #e63e21;
-	background: linear-gradient(
-		45deg,
-		rgba(230, 62, 33, 1) 50%,
-		rgba(113, 42, 30, 1) 90%
-	);
+
+@keyframes availability-pulse {
+	0%, 100% { transform: scale(1); }
+	50% { transform: scale(1.4); }
+}
+
+.availability-badge {
+	animation: availability-float 6s ease-in-out infinite;
+}
+
+.availability-badge-dot {
+	display: inline-flex;
+	animation: availability-pulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.availability-badge,
+	.availability-badge-dot {
+		animation: none;
+	}
 }
 
 .scrollbar-thin::-webkit-scrollbar {

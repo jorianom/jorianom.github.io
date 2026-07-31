@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Head from "next/head";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,25 +51,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <Head>
-        <title>John Jairo Riaño | Desarrollador Back-End y Full Stack</title>
-        <meta name="description" content="Portafolio de John Jairo Riaño, estudiante de Ingeniería de Sistemas de la Universidad Nacional. Especializado en Node.js, MongoDB, React y Next.js." />
-        <meta name="keywords" content="Desarrollador Node.js, Full Stack, Portafolio, Ingeniería de Sistemas, Universidad Nacional, React, Next.js, MongoDB, GitHub, Vercel" />
-        <meta name="author" content="John Jairo Riaño" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="Portafolio | John Jairo Riaño" />
-        <meta property="og:description" content="Proyectos con React, Next.js, Node.js, y MongoDB. Desarrollador web back-end y full stack." />
-        <meta property="og:image" content="/photo.webp" />
-        <meta property="og:url" content="https://tusitio.com" />
-        <meta property="og:type" content="website" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Portafolio | John Jairo Riaño" />
-        <meta name="twitter:description" content="Desarrollador especializado en Node.js, React y MongoDB." />
-      </Head>
-
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

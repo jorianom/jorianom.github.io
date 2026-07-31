@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 
@@ -61,6 +62,7 @@ export default function Badge() {
   const [badges, setBadges] = useState<CredlyBadge[]>([]);
   const [loading, setLoading] = useState(true);
   const [[page, direction], setPage] = useState([0, 1]);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     const fetchBadges = async () => {
@@ -84,7 +86,6 @@ export default function Badge() {
         }
       }
       /* Si todos los proxies fallaron, usar datos estáticos */
-      console.warn("CORS proxies failed – using static badge data");
       setBadges(FALLBACK_BADGES);
       setLoading(false);
     };
@@ -110,6 +111,32 @@ export default function Badge() {
     const timer = setInterval(() => paginate(1), AUTO_PLAY_MS);
     return () => clearInterval(timer);
   }, [paginate, totalPages]);
+
+  // Arrow-key navigation
+  useEffect(() => {
+    if (totalPages <= 1) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement).tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        paginate(-1);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        paginate(1);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [paginate, totalPages]);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   const currentBadges = badges.slice(
     page * ITEMS_PER_PAGE,
@@ -150,14 +177,14 @@ export default function Badge() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => paginate(-1)}
-                className="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all"
+                className="h-11 w-11 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all"
                 aria-label="Página anterior"
               >
                 <IoChevronBack className="h-4 w-4 text-white" />
               </button>
               <button
                 onClick={() => paginate(1)}
-                className="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all"
+                className="h-11 w-11 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all"
                 aria-label="Página siguiente"
               >
                 <IoChevronForward className="h-4 w-4 text-white" />
@@ -186,7 +213,7 @@ export default function Badge() {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
+                transition={{ duration: reducedMotion ? 0 : 0.45, ease: [0.23, 1, 0.32, 1] }}
                 className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"
               >
                 {currentBadges.map((badge, idx) => (
@@ -201,20 +228,19 @@ export default function Badge() {
                     className="group rounded-2xl bg-primary/80 p-[2px] hover:bg-primary transition-colors shadow-lg hover:shadow-primary/20"
                   >
                     <div className="rounded-[calc(1rem-1px)] bg-bg-dark p-5 flex flex-col items-center gap-3 text-center h-full border border-white/10 group-hover:border-primary/30 transition-colors">
-                      <div className="relative">
-                        <img
+                      <div className="relative h-[100px] w-[100px]">
+                        <Image
                           src={badge.imageUrl}
                           alt={badge.name}
-                          width={100}
-                          height={100}
+                          fill
+                          sizes="100px"
                           className="object-contain group-hover:scale-110 transition-transform duration-500"
-                          loading="lazy"
                         />
                       </div>
                       <div className="flex flex-col gap-1">
-                        <h4 className="font-bold text-xs sm:text-sm text-white leading-tight line-clamp-2">
+                        <h3 className="font-bold text-xs sm:text-sm text-white leading-tight line-clamp-2">
                           {badge.name}
-                        </h4>
+                        </h3>
                         <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono">
                           {badge.issuer}
                         </p>

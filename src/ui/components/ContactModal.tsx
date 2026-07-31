@@ -24,7 +24,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   useEffect(() => {
     if (isOpen) {
       setFormState("idle");
-      setTimeout(() => nameRef.current?.focus(), 200);
+      requestAnimationFrame(() => nameRef.current?.focus());
     }
   }, [isOpen]);
 
@@ -107,6 +107,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               </div>
               <button
                 onClick={onClose}
+                aria-label="Cerrar"
                 className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10
                            text-slate-400 hover:text-white transition-colors cursor-pointer"
               >
@@ -194,7 +195,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                 disabled={formState === "sending" || formState === "success"}
                 whileTap={{ scale: 0.97 }}
                 className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3
-                           text-sm font-bold text-white transition-all hover:bg-primary/90
+                           text-sm font-bold text-white transition-all hover:bg-primary-hover
                            disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {formState === "idle" && (

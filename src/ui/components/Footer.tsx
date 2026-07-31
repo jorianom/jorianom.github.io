@@ -25,7 +25,7 @@ export const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 border border-white/5
+              className="flex h-11 w-11 items-center justify-center rounded-lg bg-white/5 border border-white/5
                          text-slate-400 hover:text-primary hover:border-primary/30 hover:bg-primary/10
                          transition-all"
             >

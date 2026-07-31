@@ -3,15 +3,15 @@
 import { useState } from "react";
 
 const COLORS = {
-  primary: "#3FBF77",
-  primaryDark: "#2ea362",
-  secondary: "#F26457",
-  tertiary: "#F2CA50",
-  error: "#D92B4B",
-  surface: "#F2F2F2",
-  surfaceDark: "#E4E4E4",
-  text: "#1A1A1A",
-  textMuted: "#555555",
+  primary: "var(--aldia-primary)",
+  primaryDark: "var(--aldia-primary-dark)",
+  secondary: "var(--aldia-secondary)",
+  tertiary: "var(--aldia-tertiary)",
+  error: "var(--aldia-error)",
+  surface: "var(--aldia-surface)",
+  surfaceDark: "var(--aldia-surface-dark)",
+  text: "var(--aldia-text)",
+  textMuted: "var(--aldia-text-muted)",
 };
 
 const features = [
@@ -47,6 +47,17 @@ export default function AldiaLanding() {
   return (
     <>
       <style>{`
+        :root {
+          --aldia-primary: #3FBF77;
+          --aldia-primary-dark: #2ea362;
+          --aldia-secondary: #F26457;
+          --aldia-tertiary: #F2CA50;
+          --aldia-error: #D92B4B;
+          --aldia-surface: #F2F2F2;
+          --aldia-surface-dark: #E4E4E4;
+          --aldia-text: #1A1A1A;
+          --aldia-text-muted: #555555;
+        }
         @keyframes floatY {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-12px); }
@@ -71,13 +82,13 @@ export default function AldiaLanding() {
         .fade-up-5 { animation: fadeUp 0.6s 0.6s ease both; }
         .pulse-ring {
           position: absolute; inset: 0; border-radius: 999px;
-          border: 2px solid #3FBF77;
+          border: 2px solid var(--aldia-primary);
           animation: pulse-ring 1.8s ease-out infinite;
         }
         .btn-shimmer {
           background: linear-gradient(
             90deg,
-            #3FBF77 0%, #5edd96 40%, #3FBF77 60%, #2ea362 100%
+            var(--aldia-primary) 0%, #5edd96 40%, var(--aldia-primary) 60%, var(--aldia-primary-dark) 100%
           );
           background-size: 200% auto;
           animation: shimmer 3s linear infinite;

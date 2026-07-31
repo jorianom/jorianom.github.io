@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import {
     IoSchoolOutline,
@@ -67,6 +67,43 @@ export const Education = () => {
         title: string;
         src: string;
     } | null>(null);
+
+    const modalRef = useRef<HTMLDivElement>(null);
+    const closeBtnRef = useRef<HTMLButtonElement>(null);
+
+    useEffect(() => {
+        if (!viewer) return;
+
+        requestAnimationFrame(() => closeBtnRef.current?.focus());
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                setViewer(null);
+                return;
+            }
+
+            if (e.key === "Tab" && modalRef.current) {
+                const focusable = modalRef.current.querySelectorAll<HTMLElement>(
+                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                );
+                if (focusable.length === 0) return;
+
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [viewer]);
 
     return (
         <>
@@ -178,27 +215,33 @@ export const Education = () => {
 
             {/* ── Certificate viewer modal ───────────────── */}
             {viewer && (
-                <div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-                    onClick={() => setViewer(null)}
-                >
                     <div
-                        className="relative w-full max-w-3xl max-h-[90vh] rounded-2xl bg-surface border border-white/10 overflow-hidden"
-                        onClick={(e) => e.stopPropagation()}
+                        ref={modalRef}
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+                        onClick={() => setViewer(null)}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label="Visor de certificado"
                     >
-                        {/* Header */}
-                        <div className="flex items-center justify-between px-5 py-3 border-b border-white/10">
-                            <p className="text-sm font-semibold text-white truncate pr-4">
-                                {viewer.title}
-                            </p>
-                            <button
-                                onClick={() => setViewer(null)}
-                                className="shrink-0 flex h-8 w-8 items-center justify-center rounded-full
-                           hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer"
-                            >
-                                <IoCloseOutline size={20} />
-                            </button>
-                        </div>
+                        <div
+                            className="relative w-full max-w-3xl max-h-[90vh] rounded-2xl bg-surface border border-white/10 overflow-hidden"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            {/* Header */}
+                            <div className="flex items-center justify-between px-5 py-3 border-b border-white/10">
+                                <p className="text-sm font-semibold text-white truncate pr-4">
+                                    {viewer.title}
+                                </p>
+                                <button
+                                    ref={closeBtnRef}
+                                    onClick={() => setViewer(null)}
+                                    aria-label="Cerrar"
+                                    className="shrink-0 flex h-8 w-8 items-center justify-center rounded-full
+                               hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer"
+                                >
+                                    <IoCloseOutline size={20} />
+                                </button>
+                            </div>
 
                         {/* Body */}
                         <div className="p-4 flex items-center justify-center overflow-auto max-h-[calc(90vh-56px)]">

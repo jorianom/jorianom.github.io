@@ -1,14 +1,22 @@
+function renderBullet(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/);
+  return parts.map((part, i) =>
+    part.startsWith("**") && part.endsWith("**")
+      ? <strong key={i}>{part.slice(2, -2)}</strong>
+      : part,
+  );
+}
+
 const experiences = [
   {
     company: "Siigo",
     role: "Desarrollador Full Stack Ssr",
     period: "03/2021 – Actual",
     achievements: [
-      "Automatización de procesos de negocio mediante scripts en JavaScript sobre el ERP Oracle NetSuite, orientados a la mejora de la gestión de la información, reducción de carga operativa y fortalecimiento de la trazabilidad y consistencia de datos.",
-      "Diseño e implementación de servicios web (APIs REST) utilizando tecnologías como .NET, Go y Node.js, facilitando la integración entre distintos sistemas de información y la consolidación de datos provenientes de múltiples fuentes.",
-      "Gestión y mantenimiento de bases de datos relacionales y no relacionales, apoyando procesos de consulta, actualización y análisis de información para la generación de reportes y soporte a la toma de decisiones.",
-      "Participación en procesos de mejora continua del ciclo de desarrollo de software, aplicando control de versiones con Git y apoyando la automatización de despliegues, garantizando la estabilidad, mantenibilidad y disponibilidad de los sistemas.",
-      "Elaboración y documentación de requerimientos funcionales y no funcionales, así como de procesos técnicos, asegurando la correcta alineación entre las necesidades organizacionales y las soluciones implementadas.",
+      "Automatización de procesos sobre **Oracle NetSuite** con scripts en **JavaScript**, reduciendo carga operativa y mejorando la trazabilidad de datos.",
+      "Diseño e implementación de **APIs REST** con **.NET**, **Go** y **Node.js** para integración entre sistemas de información y consolidación de datos.",
+      "Administración de bases de datos **relacionales** y **no relacionales** para consulta, actualización, análisis y generación de reportes.",
+      "Control de versiones con **Git** y automatización de despliegues, garantizando la estabilidad y disponibilidad de los sistemas.",
     ],
   },
 ] as const;
@@ -47,7 +55,7 @@ export const Experience = () => {
                   {exp.achievements.map((item, i) => (
                     <li key={i} className="flex gap-3">
                       <span className="text-primary mt-0.5 shrink-0">▹</span>
-                      <span>{item}</span>
+                      <span>{renderBullet(item)}</span>
                     </li>
                   ))}
                 </ul>
