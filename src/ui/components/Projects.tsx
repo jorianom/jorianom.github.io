@@ -3,6 +3,7 @@ import Image from "next/image"
 type Project = {
     title: string
     description: string
+    outcome: string
     stack: string[]
     image: string
     url: string
@@ -11,35 +12,40 @@ type Project = {
 const projects: Project[] = [
     {
         title: "GestoriX",
-        description: "Plataforma sencilla para gestionar reservas de citas con tus clientes. Administra horarios, clientes y servicios de forma intuitiva y optimiza la experiencia de agendamiento.",
+        description: "Aplicación web de gestión de reservas construida con Next.js, Node.js y PostgreSQL.",
+        outcome: "Desplegada en gestorix.app",
         stack: ["Next.js", "Node.js", "PostgreSQL", "Vercel"],
         image: "/project_4.webp",
         url: "https://gestorix.app/",
     },
     {
         title: "AlDía",
-        description: "Aplicación móvil que te facilita mantenerte al día con tus deudas y tus deudores. Con una interfaz amigable, te ayuda a organizar tus finanzas personales de manera eficiente.",
+        description: "Aplicación móvil para el seguimiento de deudas personales desarrollada en Flutter y Dart.",
+        outcome: "APK disponible para Android",
         stack: ["Flutter", "Dart"],
         image: "/project_5.webp",
         url: "https://jorianom.me/aldia",
     },
     {
         title: "Pódium Académico",
-        description: "Plataforma de gestión académica para instituciones educativas. Permite administrar cursos, estudiantes y profesores con una interfaz intuitiva y funcionalidades robustas.",
+        description: "Sistema de gestión académica desarrollado con Next.js, Node.js y PostgreSQL.",
+        outcome: "Desplegada en Vercel",
         stack: ["Next.js", "Node.js", "PostgreSQL"],
         image: "/project_1.webp",
         url: "https://podium-academico.vercel.app/",
     },
     {
         title: "Uploader NetSuite",
-        description: "Extensión para Visual Studio Code diseñada para facilitar la carga y sincronización de scripts en NetSuite directamente desde el editor.",
+        description: "Extensión para Visual Studio Code desarrollada en TypeScript para cargar y sincronizar scripts con Oracle NetSuite.",
+        outcome: "Publicada en VS Code Marketplace",
         stack: ["TypeScript", "VS Code API", "NetSuite"],
         image: "/project_2.webp",
         url: "https://marketplace.visualstudio.com/items?itemName=jorianom.uploader-netsuite",
     },
     {
         title: "Ecommerce Seed House",
-        description: "Tienda virtual minimalista para productos agrícolas. Optimizada para rendimiento, responsiva y fácil de escalar.",
+        description: "E-commerce para productos agrícolas desarrollado con Next.js y Tailwind CSS.",
+        outcome: "Desplegada en producción",
         stack: ["Next.js", "Tailwind CSS"],
         image: "/project_3.webp",
         url: "https://ecommerce-seed-house.vercel.app/",
@@ -80,6 +86,9 @@ export const Projects = () => {
                                 </h3>
                                 <p className="text-sm text-slate-400 leading-relaxed line-clamp-2">
                                     {project.description}
+                                </p>
+                                <p className="text-xs text-slate-500 font-mono">
+                                    {project.outcome}
                                 </p>
                                 <div className="flex flex-wrap gap-2">
                                     {project.stack.map((t) => (

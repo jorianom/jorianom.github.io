@@ -1,16 +1,28 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image"
 import { SocialList } from "./buttons/SocialList"
 import { AvailabilityBadge } from "./AvailabilityBadge"
+import { ContactModal } from "./ContactModal"
 import Link from "next/link"
 
 export const ProfileCard = () => {
+    const [showContact, setShowContact] = useState(false);
+
     return (
+        <>
         <section className="relative py-10 sm:py-16 lg:py-20 bg-surface rounded-3xl border border-white/5 shadow-2xl my-6 overflow-hidden">
             <div className="flex flex-col-reverse sm:grid sm:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center px-6 sm:px-8 lg:px-12">
                 {/* Left: Text content */}
                 <div className="sm:col-span-7 flex flex-col items-center sm:items-start gap-5 sm:gap-6">
                     {/* Availability badge */}
                     <AvailabilityBadge />
+
+                    {/* Role, seniority, location */}
+                    <p className="font-mono text-xs tracking-widest text-slate-400">
+                        Desarrollador Full Stack · 5+ años · Bogotá, Colombia
+                    </p>
 
                     {/* Headline */}
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter leading-tight text-white text-center sm:text-left">
@@ -20,9 +32,7 @@ export const ProfileCard = () => {
 
                     {/* Description */}
                     <p className="text-slate-300 max-w-2xl text-sm lg:text-base leading-relaxed font-medium text-center sm:text-left">
-                        Diseño y desarrollo aplicaciones web completas — desde la arquitectura
-                        hasta el despliegue. Trabajo con Node.js, React, Next.js, MongoDB y PostgreSQL
-                        para convertir ideas en productos funcionales, escalables y listos para producción.
+                        Desarrollo software de extremo a extremo, desde interfaces con TypeScript, React y Next.js hasta APIs e integraciones con Node.js, .NET y Go, pasando por bases de datos SQL y NoSQL e infraestructura en AWS.
                     </p>
 
                     {/* Social icons */}
@@ -36,13 +46,12 @@ export const ProfileCard = () => {
                         >
                             Ver Proyectos
                         </Link>
-                        <Link
-                            href="https://www.linkedin.com/in/jorianom/"
-                            target="_blank"
-                            className="inline-flex items-center gap-3 rounded-full border border-white/20 px-8 py-3 font-bold text-white transition-all hover:bg-white/5"
+                        <button
+                            onClick={() => setShowContact(true)}
+                            className="inline-flex items-center gap-3 rounded-full border border-white/20 px-8 py-3 font-bold text-white transition-all hover:bg-white/5 cursor-pointer"
                         >
-                            Conectemos
-                        </Link>
+                            Contáctame
+                        </button>
                     </div>
                 </div>
 
@@ -63,5 +72,8 @@ export const ProfileCard = () => {
                 </div>
             </div>
         </section>
+
+            <ContactModal isOpen={showContact} onClose={() => setShowContact(false)} />
+        </>
     )
 }

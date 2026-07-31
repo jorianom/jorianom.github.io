@@ -9,7 +9,7 @@ const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/jorianom/", icon: FaLinkedinIn },
   { label: "GitHub", href: "https://github.com/jorianom", icon: FaGithub },
   { label: "WhatsApp", href: "https://wa.me/573205802499", icon: FaWhatsapp },
-  { label: "Email", href: "mailto:jjrianom@unal.edu.co", icon: FaEnvelope },
+  { label: "Email", href: "mailto:rianosoftware.dev@gmail.com", icon: FaEnvelope },
 ];
 
 export const Footer = () => {

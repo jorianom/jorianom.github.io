@@ -11,22 +11,22 @@ type Category = {
 
 const categories: Category[] = [
     {
-        title: "Frontend & UX",
-        techs: "HTML, CSS, JavaScript, React.js, Next.js, Tailwind CSS",
+        title: "Frontend",
+        techs: "HTML, CSS, JavaScript, TypeScript, React.js, Next.js, Tailwind CSS",
         icon: FaReact,
         iconColor: "text-cyan-400",
         accent: "from-cyan-400/80 to-cyan-400/10",
     },
     {
         title: "Backend & Logic",
-        techs: "Node.js, Express, REST APIs",
+        techs: "Node.js, Express, .NET, Go",
         icon: FaNode,
         iconColor: "text-green-400",
         accent: "from-green-400/80 to-green-400/10",
     },
     {
         title: "Data & Databases",
-        techs: "PostgreSQL, MongoDB",
+        techs: "PostgreSQL, MongoDB, SQL",
         icon: FaDatabase,
         iconColor: "text-blue-400",
         accent: "from-blue-400/80 to-blue-400/10",
