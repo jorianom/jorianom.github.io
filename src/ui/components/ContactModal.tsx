@@ -55,7 +55,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
     try {
       const res = await fetch(
-        "https://formsubmit.co/ajax/jorianom@unal.edu.co",
+        "https://formsubmit.co/ajax/rianosoftware.dev@gmail.com",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -63,7 +63,9 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
         }
       );
 
-      if (res.ok) {
+      const data = await res.json().catch(() => null);
+
+      if (res.ok && data?.success === "true") {
         setFormState("success");
         formRef.current.reset();
         setTimeout(onClose, 2000);
@@ -215,7 +217,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
               {formState === "error" && (
                 <p className="text-xs text-red-400 text-center font-mono">
-                  No se pudo enviar. Intenta de nuevo o escríbeme a jjrianom@unal.edu.co
+                  No se pudo enviar. Intenta de nuevo o escríbeme a rianosoftware.dev@gmail.com
                 </p>
               )}
             </form>
