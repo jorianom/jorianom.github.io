@@ -14,7 +14,7 @@ const socialLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="mt-10 border-t border-white/5 py-10">
+    <footer className="border-t border-white/5 py-16">
       <div className="flex flex-col items-center gap-5">
         {/* Social icons */}
         <div className="flex items-center gap-3">
@@ -35,7 +35,7 @@ export const Footer = () => {
         </div>
 
         {/* Bottom line */}
-        <div className="flex items-center gap-2 text-xs text-slate-500 font-mono">
+        <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
           <span>&copy; {new Date().getFullYear()} John Riaño · Bogotá, Colombia</span>
         </div>
       </div>

@@ -54,7 +54,7 @@ const projects: Project[] = [
 
 export const Projects = () => {
     return (
-        <section id="projects" className="py-20 text-white">
+        <section id="projects" className="py-20 border-t border-white/5 text-white">
             <div className="flex flex-col gap-10">
                 <h2 className="text-3xl font-black text-white">
                     Mis Proyectos
@@ -69,6 +69,7 @@ export const Projects = () => {
                             rel="noopener noreferrer"
                             className="group relative overflow-hidden rounded-xl border border-white/10 bg-surface transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5"
                         >
+                            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary/80 to-primary/10 z-10" />
                             <div className="relative overflow-hidden aspect-[16/10]">
                                 <Image
                                     src={project.image}
@@ -87,14 +88,14 @@ export const Projects = () => {
                                 <p className="text-sm text-slate-400 leading-relaxed line-clamp-2">
                                     {project.description}
                                 </p>
-                                <p className="text-xs text-slate-500 font-mono">
+                                <p className="text-xs text-slate-400 font-mono">
                                     {project.outcome}
                                 </p>
                                 <div className="flex flex-wrap gap-2">
                                     {project.stack.map((t) => (
                                         <span
                                             key={t}
-                                            className="rounded-md border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-[11px] text-slate-400"
+                                            className="rounded-md border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-xs text-slate-400"
                                         >
                                             {t}
                                         </span>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
@@ -63,6 +63,7 @@ export default function Badge() {
   const [loading, setLoading] = useState(true);
   const [[page, direction], setPage] = useState([0, 1]);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchBadges = async () => {
@@ -116,8 +117,7 @@ export default function Badge() {
   useEffect(() => {
     if (totalPages <= 1) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      const tag = (e.target as HTMLElement).tagName;
-      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      if (!carouselRef.current?.contains(e.target as Node)) return;
       if (e.key === "ArrowLeft") {
         e.preventDefault();
         paginate(-1);
@@ -158,7 +158,7 @@ export default function Badge() {
   };
 
   return (
-    <section className="py-10 border-t border-white/5">
+    <section className="py-20 border-t border-white/5">
       <div className="flex flex-col gap-10">
         {/* Header: título + controles */}
         <div className="flex items-end justify-between gap-4">
@@ -167,7 +167,7 @@ export default function Badge() {
               Certificaciones &amp; Insignias
             </h2>
             {!loading && (
-              <p className="text-xs text-slate-500 font-mono mt-2">
+              <p className="text-xs text-slate-400 font-mono mt-2">
                 {badges.length} credenciales verificadas
               </p>
             )}
@@ -197,14 +197,12 @@ export default function Badge() {
           /* Skeleton */
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
             {Array.from({ length: ITEMS_PER_PAGE }).map((_, i) => (
-              <div key={i} className="rounded-2xl bg-white/5 p-[2px]">
-                <div className="rounded-[calc(1rem-1px)] bg-bg-dark p-6 h-56 animate-pulse" />
-              </div>
+              <div key={i} className="rounded-2xl bg-surface p-5 h-[216px] motion-safe:animate-pulse" />
             ))}
           </div>
         ) : (
           /* Carousel gallery */
-          <div className="relative overflow-hidden min-h-[280px]">
+          <div className="relative overflow-hidden min-h-[280px]" ref={carouselRef}>
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={page}
@@ -225,9 +223,9 @@ export default function Badge() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.08, duration: 0.35 }}
-                    className="group rounded-2xl bg-primary/80 p-[2px] hover:bg-primary transition-colors shadow-lg hover:shadow-primary/20"
+                    className="group rounded-2xl"
                   >
-                    <div className="rounded-[calc(1rem-1px)] bg-bg-dark p-5 flex flex-col items-center gap-3 text-center h-full border border-white/10 group-hover:border-primary/30 transition-colors">
+                    <div className="rounded-2xl bg-surface p-5 min-h-[216px] flex flex-col items-center gap-3 text-center h-full border border-white/10 group-hover:border-primary/30 transition-colors">
                       <div className="relative h-[100px] w-[100px]">
                         <Image
                           src={badge.imageUrl}
@@ -241,7 +239,7 @@ export default function Badge() {
                         <h3 className="font-bold text-xs sm:text-sm text-white leading-tight line-clamp-2">
                           {badge.name}
                         </h3>
-                        <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono">
+                        <p className="text-[10px] text-slate-400 uppercase tracking-widest font-mono">
                           {badge.issuer}
                         </p>
                       </div>
@@ -255,18 +253,22 @@ export default function Badge() {
 
         {/* Page dots */}
         {totalPages > 1 && !loading && (
-          <div className="flex justify-center gap-2">
+          <div className="flex items-center justify-center">
             {Array.from({ length: totalPages }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => setPage([i, i > page ? 1 : -1])}
                 aria-label={`Ir a página ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === page
-                    ? "w-6 bg-primary"
-                    : "w-2 bg-white/20 hover:bg-white/40"
-                }`}
-              />
+                className="flex h-11 min-w-11 items-center justify-center px-1 cursor-pointer"
+              >
+                <span
+                  className={`block h-1.5 rounded-full transition-all duration-300 ${
+                    i === page
+                      ? "w-6 bg-primary"
+                      : "w-2 bg-white/20 hover:bg-white/40"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         )}

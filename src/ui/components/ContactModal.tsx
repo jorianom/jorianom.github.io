@@ -103,14 +103,14 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
             <div className="flex items-center justify-between px-6 py-4 border-b border-white/5">
               <div>
                 <h3 className="text-lg font-bold text-white">Contáctame</h3>
-                <p className="text-xs text-slate-500 font-mono mt-0.5">
+                <p className="text-xs text-slate-400 font-mono mt-0.5">
                   Freelance · Ofertas · Colaboración
                 </p>
               </div>
               <button
                 onClick={onClose}
                 aria-label="Cerrar"
-                className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10
+                className="flex h-11 w-11 items-center justify-center rounded-full hover:bg-white/10
                            text-slate-400 hover:text-white transition-colors cursor-pointer"
               >
                 <IoCloseOutline size={20} />
@@ -121,7 +121,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
             <form ref={formRef} onSubmit={handleSubmit} className="p-6 flex flex-col gap-4">
               {/* Name */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="contact-name" className="text-xs font-mono uppercase tracking-widest text-slate-500">
+                <label htmlFor="contact-name" className="text-xs font-mono uppercase tracking-widest text-slate-400">
                   Nombre
                 </label>
                 <input
@@ -132,14 +132,14 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                   required
                   placeholder="Tu nombre"
                   className="rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white
-                             placeholder:text-slate-600 outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
+                             placeholder:text-slate-500 outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
                              transition-all"
                 />
               </div>
 
               {/* Email */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="contact-email" className="text-xs font-mono uppercase tracking-widest text-slate-500">
+                <label htmlFor="contact-email" className="text-xs font-mono uppercase tracking-widest text-slate-400">
                   Correo electrónico
                 </label>
                 <input
@@ -149,14 +149,14 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                   required
                   placeholder="correo@ejemplo.com"
                   className="rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white
-                             placeholder:text-slate-600 outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
+                             placeholder:text-slate-500 outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
                              transition-all"
                 />
               </div>
 
               {/* Type */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="contact-type" className="text-xs font-mono uppercase tracking-widest text-slate-500">
+                <label htmlFor="contact-type" className="text-xs font-mono uppercase tracking-widest text-slate-400">
                   Tipo de contacto
                 </label>
                 <select
@@ -176,7 +176,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
               {/* Message */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="contact-message" className="text-xs font-mono uppercase tracking-widest text-slate-500">
+                <label htmlFor="contact-message" className="text-xs font-mono uppercase tracking-widest text-slate-400">
                   Mensaje
                 </label>
                 <textarea
@@ -186,7 +186,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                   rows={3}
                   placeholder="Cuéntame brevemente sobre tu proyecto..."
                   className="rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white
-                             placeholder:text-slate-600 outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
+                             placeholder:text-slate-500 outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
                              transition-all resize-none"
                 />
               </div>
@@ -197,7 +197,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                 disabled={formState === "sending" || formState === "success"}
                 whileTap={{ scale: 0.97 }}
                 className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3
-                           text-sm font-bold text-white transition-all hover:bg-primary-hover
+                           text-sm font-bold text-bg-dark transition-all hover:shadow-lg hover:shadow-primary/20
                            disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {formState === "idle" && (
@@ -207,7 +207,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                 )}
                 {formState === "sending" && (
                   <span className="flex items-center gap-2">
-                    <span className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                    <span className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white motion-safe:animate-spin" />
                     Enviando...
                   </span>
                 )}

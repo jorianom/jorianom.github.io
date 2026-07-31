@@ -55,12 +55,12 @@ export const Experience = () => {
                     </div>
                     <div>
                       <p className="text-xs font-mono uppercase text-primary leading-tight">{exp.roles[0].title}</p>
-                      <p className="text-[10px] text-slate-500 font-mono uppercase tracking-widest">{exp.roles[0].period}</p>
+                      <p className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">{exp.roles[0].period}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-px h-4 bg-primary/30 ml-[3px]" />
-                    <span className="text-[10px] text-primary/50 font-mono uppercase tracking-wider">Promoción interna</span>
+                    <span className="text-[10px] text-accent font-mono uppercase tracking-wider">Promoción interna</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <div className="flex flex-col items-center mt-[3px]">
@@ -68,7 +68,7 @@ export const Experience = () => {
                     </div>
                     <div>
                       <p className="text-xs font-mono uppercase text-slate-400 leading-tight">{exp.roles[1].title}</p>
-                      <p className="text-[10px] text-slate-500 font-mono uppercase tracking-widest">{exp.roles[1].period}</p>
+                      <p className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">{exp.roles[1].period}</p>
                     </div>
                   </div>
                 </div>

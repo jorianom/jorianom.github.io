@@ -42,7 +42,7 @@ export const ProfileCard = () => {
                     <div className="flex flex-wrap justify-center sm:justify-start gap-4">
                         <Link
                             href="#projects"
-                            className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-3 font-bold text-white transition-transform hover:scale-105 shadow-lg shadow-primary/20"
+                            className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-3 font-bold text-bg-dark transition-transform hover:scale-105 shadow-lg shadow-primary/20"
                         >
                             Ver Proyectos
                         </Link>
@@ -58,7 +58,7 @@ export const ProfileCard = () => {
                 {/* Right: Photo */}
                 <div className="sm:col-span-5 flex flex-col items-center sm:justify-center lg:justify-end">
                     <div className="relative">
-                        <div className="relative h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 overflow-hidden rounded-full border-4 border-white/10 shadow-2xl bg-slate-800">
+                        <div className="relative h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 overflow-hidden rounded-full border border-white/10 shadow-2xl bg-slate-800">
                             <Image
                                 src={"/photo_.webp"}
                                 fill

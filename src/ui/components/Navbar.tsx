@@ -25,10 +25,11 @@ export const Navbar = () => {
 
         const observer = new IntersectionObserver(
             (entries) => {
-                for (const entry of entries) {
-                    if (entry.isIntersecting) {
-                        setActiveSection(entry.target.id);
-                    }
+                const visible = entries.filter((e) => e.isIntersecting);
+                if (visible.length > 0) {
+                    setActiveSection(visible[visible.length - 1].target.id);
+                } else {
+                    setActiveSection("");
                 }
             },
             { rootMargin: "-80px 0px -40% 0px", threshold: 0 }
@@ -52,7 +53,8 @@ export const Navbar = () => {
     }, []);
 
     const scrollToTop = useCallback(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
     }, []);
 
     const linkClass = (href: string) =>
@@ -65,7 +67,7 @@ export const Navbar = () => {
     return (
         <>
             <div
-                className="fixed top-0 left-0 z-[60] h-[2px] bg-primary transition-[width] duration-150 ease-out"
+                className="fixed top-0 left-0 z-[60] h-[2px] bg-primary"
                 style={{ width: `${scrollProgress}%` }}
             />
 
@@ -79,7 +81,7 @@ export const Navbar = () => {
                             <span className="text-lg font-bold leading-none tracking-tight text-white">
                                 John Jairo Riaño Martinez
                             </span>
-                            <span className="font-mono text-[10px] uppercase tracking-widest text-primary">
+                            <span className="font-mono text-[10px] uppercase tracking-widest text-slate-400">
                                 Software Developer
                             </span>
                         </div>
@@ -97,7 +99,7 @@ export const Navbar = () => {
                         ))}
                         <button
                             onClick={() => setShowContact(true)}
-                            className="rounded-lg bg-primary px-5 py-2 text-sm font-bold text-white hover:bg-primary-hover transition-all cursor-pointer"
+                            className="min-h-11 rounded-lg bg-primary px-5 text-sm font-bold text-bg-dark transition-all hover:shadow-lg hover:shadow-primary/20 cursor-pointer"
                         >
                             Contáctame
                         </button>
@@ -127,7 +129,7 @@ export const Navbar = () => {
                             ))}
                             <button
                                 onClick={() => { setIsOpen(false); setShowContact(true); }}
-                                className="mt-1 rounded-lg bg-primary px-5 py-2 text-center text-sm font-bold text-white hover:bg-primary-hover transition-all cursor-pointer"
+                                className="mt-1 min-h-11 rounded-lg bg-primary px-5 text-center text-sm font-bold text-bg-dark transition-all hover:shadow-lg hover:shadow-primary/20 cursor-pointer"
                             >
                                 Contáctame
                             </button>

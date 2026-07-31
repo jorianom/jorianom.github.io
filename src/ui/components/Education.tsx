@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "motion/react";
 import {
     IoSchoolOutline,
     IoDocumentTextOutline,
@@ -130,12 +131,13 @@ export const Education = () => {
                             <div
                                 key={item.title}
                                 className="group relative rounded-xl bg-surface/60 border border-white/5
-                           hover:border-primary/20 transition-colors overflow-hidden"
+                           hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5
+                           transition-all duration-300 overflow-hidden"
                             >
-                                {/* Left accent bar */}
-                                <div className="absolute left-0 inset-y-0 w-1 bg-primary" />
+                                {/* Signature top bar */}
+                                <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary/80 to-primary/10" />
 
-                                <div className="flex items-start gap-4 p-6 pl-7">
+                                <div className="flex items-start gap-4 p-6">
                                     <div className="shrink-0 mt-0.5 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
                                         <IoSchoolOutline size={22} />
                                     </div>
@@ -148,7 +150,7 @@ export const Education = () => {
                                         </p>
                                         {item.status && (
                                             <span className="inline-flex items-center gap-1.5 mt-3 text-[10px] font-mono uppercase tracking-widest text-green-400 border border-green-400/30 rounded-full px-3 py-0.5">
-                                                <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
+                                                <span className="h-1.5 w-1.5 rounded-full bg-green-400 motion-safe:animate-pulse" />
                                                 {item.status}
                                             </span>
                                         )}
@@ -158,7 +160,7 @@ export const Education = () => {
                         ))}
 
                         {/* Section label */}
-                        <p className="text-xs text-slate-500 font-mono uppercase tracking-widest border-b border-white/5 pb-2">
+                        <p className="text-xs text-slate-400 font-mono uppercase tracking-widest border-b border-white/5 pb-2">
                             Diplomados &amp; Formación Complementaria
                         </p>
 
@@ -167,9 +169,13 @@ export const Education = () => {
                             {diplomas.map((item) => (
                                 <div
                                     key={item.title}
-                                    className="group relative rounded-xl bg-surface/40 border border-white/5 p-5
-                             hover:border-primary/20 hover:bg-surface/70 transition-all"
+                                    className="group relative overflow-hidden rounded-xl bg-surface/40 border border-white/5 p-5
+                             hover:border-primary/40 hover:bg-surface/70 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5
+                             transition-all duration-300"
                                 >
+                                    {/* Signature top bar */}
+                                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary/80 to-primary/10" />
+
                                     <div className="flex items-start gap-3">
                                         <div className="shrink-0 mt-0.5 flex h-8 w-8 items-center justify-center rounded-md bg-white/5 text-primary/70 group-hover:text-primary transition-colors">
                                             <IoDocumentTextOutline size={18} />
@@ -178,7 +184,7 @@ export const Education = () => {
                                             <h3 className="text-sm font-semibold text-white leading-snug">
                                                 {item.title}
                                             </h3>
-                                            <p className="text-[11px] text-slate-500 font-mono mt-1">
+                                            <p className="text-xs text-slate-400 font-mono mt-1">
                                                 {item.institution}
                                             </p>
                                         </div>
@@ -187,7 +193,7 @@ export const Education = () => {
                                     {/* Footer: hours + certificate link */}
                                     <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/5">
                                         {item.hours && (
-                                            <span className="text-[10px] text-slate-500 font-mono uppercase tracking-widest">
+                                            <span className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">
                                                 {item.hours}
                                             </span>
                                         )}
@@ -200,8 +206,8 @@ export const Education = () => {
                                                         src: item.certificate!,
                                                     })
                                                 }
-                                                className="ml-auto flex items-center gap-1.5 text-[11px] text-primary font-mono uppercase tracking-wider
-                                   hover:text-white transition-colors cursor-pointer"
+                                                className="ml-auto inline-flex min-h-11 items-center gap-1.5 rounded-md px-3 text-xs text-primary font-mono uppercase tracking-wider
+                                   hover:bg-white/5 hover:text-white transition-colors cursor-pointer"
                                             >
                                                 <IoEyeOutline size={14} />
                                                 Ver certificado
@@ -222,18 +228,24 @@ export const Education = () => {
 
             {/* ── Certificate viewer modal ───────────────── */}
             {viewer && (
-                    <div
-                        ref={modalRef}
-                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-                        onClick={() => setViewer(null)}
-                        role="dialog"
-                        aria-modal="true"
-                        aria-label="Visor de certificado"
+                <motion.div
+                    ref={modalRef}
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+                    onClick={() => setViewer(null)}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Visor de certificado"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.25 }}
+                >
+                    <motion.div
+                        className="relative w-full max-w-3xl max-h-[90vh] rounded-2xl bg-surface border border-white/10 overflow-hidden"
+                        onClick={(e) => e.stopPropagation()}
+                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ type: "spring", damping: 25, stiffness: 300 }}
                     >
-                        <div
-                            className="relative w-full max-w-3xl max-h-[90vh] rounded-2xl bg-surface border border-white/10 overflow-hidden"
-                            onClick={(e) => e.stopPropagation()}
-                        >
                             {/* Header */}
                             <div className="flex items-center justify-between px-5 py-3 border-b border-white/10">
                                 <p className="text-sm font-semibold text-white truncate pr-4">
@@ -243,7 +255,7 @@ export const Education = () => {
                                     ref={closeBtnRef}
                                     onClick={() => setViewer(null)}
                                     aria-label="Cerrar"
-                                    className="shrink-0 flex h-8 w-8 items-center justify-center rounded-full
+                                    className="shrink-0 flex h-11 w-11 items-center justify-center rounded-full
                                hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer"
                                 >
                                     <IoCloseOutline size={20} />
@@ -269,8 +281,8 @@ export const Education = () => {
                                 />
                             )}
                         </div>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             )}
         </>
     );

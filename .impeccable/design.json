@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-31T00:00:00.000Z",
+  "title": "Design System: El Espacio de Trabajo a Media Luz",
+  "extensions": {
+    "colorMeta": {
+      "fire-trail": {
+        "role": "primary",
+        "displayName": "Rastro de Fuego",
+        "canonical": "oklch(68% 0.19 30)",
+        "tonalRamp": ["#3a0901", "#66180a", "#8f2611", "#b93619", "#dd4721", "#ff4d2e", "#ff9378", "#ffd2c4"]
+      },
+      "fire-trail-deep": {
+        "role": "primary",
+        "displayName": "Rastro de Fuego Profundo",
+        "canonical": "oklch(62% 0.18 29)",
+        "tonalRamp": ["#360801", "#5e1509", "#85220f", "#aa2f16", "#cc3d1d", "#e63e21", "#f78b6d", "#fbd2c3"]
+      },
+      "fire-glow": {
+        "role": "primary",
+        "displayName": "Resplandor de Ascua",
+        "canonical": "oklch(75% 0.15 35)",
+        "tonalRamp": ["#4a0d02", "#7a1f0d", "#a5301a", "#d04627", "#f56044", "#ff7a63", "#ffab98", "#ffddd4"]
+      },
+      "signal-green": {
+        "role": "neutral",
+        "displayName": "Verde de Señal de Vida",
+        "canonical": "oklch(82% 0.18 155)",
+        "tonalRamp": ["#06351e", "#0b5230", "#126f42", "#1d8c52", "#33aa63", "#4ade80", "#93e6b0", "#d9f7e5"]
+      },
+      "ink-void": {
+        "role": "neutral",
+        "displayName": "Vacío de Tinta",
+        "canonical": "oklch(16% 0.005 20)",
+        "tonalRamp": ["#0d0d0d", "#101010", "#131313", "#181818", "#1e1e1e", "#262626", "#303030", "#3d3d3d"]
+      },
+      "slate-surface": {
+        "role": "neutral",
+        "displayName": "Superficie de Carbón",
+        "canonical": "oklch(22% 0.005 20)",
+        "tonalRamp": ["#101010", "#141414", "#181818", "#1d1d1d", "#222222", "#2a2a2a", "#343434", "#414141"]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Papel",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": ["#8a8a8a", "#9f9f9f", "#b3b3b3", "#c7c7c7", "#dcdcdc", "#eeeeee", "#f7f7f7", "#ffffff"]
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Neblina",
+        "canonical": "oklch(85% 0.03 255)",
+        "tonalRamp": ["#27313f", "#3d4a5b", "#54637a", "#6b7d98", "#8899b3", "#a6b5ca", "#cbd5e1", "#e6ebf2"]
+      },
+      "ash": {
+        "role": "neutral",
+        "displayName": "Ceniza",
+        "canonical": "oklch(72% 0.04 255)",
+        "tonalRamp": ["#232a34", "#37414e", "#4c5868", "#606f82", "#78879c", "#94a3b8", "#b3bfcf", "#d8dee8"]
+      },
+      "stone": {
+        "role": "neutral",
+        "displayName": "Piedra",
+        "canonical": "oklch(60% 0.04 255)",
+        "tonalRamp": ["#1b222e", "#2c3646", "#3d495e", "#4e5d76", "#64748b", "#7e8da3", "#9ca9bc", "#c3cbd8"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Headline del hero; solo una vez por página." },
+      "headline": { "displayName": "Headline", "purpose": "Títulos de sección (text-3xl font-black)." },
+      "title": { "displayName": "Title", "purpose": "Títulos de tarjeta, empresa y proyecto." },
+      "body": { "displayName": "Body", "purpose": "Descripciones y bullets (slate-300, ~65ch)." },
+      "label": { "displayName": "Label", "purpose": "Metadatos y etiquetas técnicas en Geist Mono 10px uppercase." },
+      "meta": { "displayName": "Meta", "purpose": "Chips de tecnología y enlaces de acción compactos en Geist Mono 12px." }
+    },
+    "shadows": [
+      { "name": "ambiental-calida", "value": "0 10px 15px -3px rgba(255, 77, 46, 0.2)", "purpose": "Bajo CTAs primarios y back-to-top: la acción 'enciende'." },
+      { "name": "elevacion-hover", "value": "0 10px 15px -3px rgba(255, 77, 46, 0.05)", "purpose": "Hover de tarjetas junto a translateY(-2px) y borde primary/40." },
+      { "name": "superpuesta", "value": "0 25px 50px -12px rgba(0, 0, 0, 0.5)", "purpose": "Hero card, modal de contacto, foto de perfil (shadow-2xl)." },
+      { "name": "brillo-verde", "value": "0 0 20px rgba(74, 222, 128, 0.15)", "purpose": "Únicamente el badge de disponibilidad." }
+    ],
+    "motion": [
+      { "name": "dur-basica", "value": "200ms", "purpose": "Transición estándar de estados (color, border, background)." },
+      { "name": "dur-card", "value": "300ms", "purpose": "Transición de tarjetas (border, shadow, translateY)." },
+      { "name": "ease-carrusel", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Deslizamiento del carrusel de insignias (450ms)." },
+      { "name": "spring-modal", "value": "spring (damping 25, stiffness 300)", "purpose": "Apertura del modal de contacto y visor de certificados." },
+      { "name": "flotar-disponibilidad", "value": "flotar 6s ease-in-out", "purpose": "Flotación del badge de disponibilidad." },
+      { "name": "pulso-disponibilidad", "value": "pulso 2s ease-in-out", "purpose": "Pulso del punto verde de disponibilidad." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "CTA principal en píldora; el Rastro de Fuego que enciende la acción.",
+      "html": "<button class=\"ds-btn-primary\">Ver Proyectos</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 12px; background: #ff4d2e; color: #181818; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 700; padding: 12px 32px; border: none; border-radius: 9999px; cursor: pointer; box-shadow: 0 10px 15px -3px rgba(255, 77, 46, 0.2); transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; } .ds-btn-primary:hover { transform: scale(1.05); background: #ff5a35; } .ds-btn-primary:focus-visible { outline: 2px solid #ff4d2e; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Segundo CTA en píldora, contorno fino que se ilumina en hover.",
+      "html": "<button class=\"ds-btn-ghost\">Contáctame</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: #ffffff; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 700; padding: 12px 32px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 9999px; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease; } .ds-btn-ghost:hover { background: rgba(255, 255, 255, 0.05); } .ds-btn-ghost:focus-visible { outline: 2px solid #ff4d2e; outline-offset: 2px; }"
+    },
+    {
+      "name": "Nav Button",
+      "kind": "button",
+      "refersTo": "button-primary-square",
+      "description": "Botón cuadrado del navbar y del envío de formulario.",
+      "html": "<button class=\"ds-btn-nav\">Contáctame</button>",
+      "css": ".ds-btn-nav { background: #ff4d2e; color: #181818; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 700; padding: 8px 20px; min-height: 44px; border: none; border-radius: 8px; cursor: pointer; transition: box-shadow 0.2s ease; } .ds-btn-nav:hover { box-shadow: 0 10px 15px -3px rgba(255, 77, 46, 0.2); } .ds-btn-nav:focus-visible { outline: 2px solid #ff4d2e; outline-offset: 2px; }"
+    },
+    {
+      "name": "Tech Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Tag de tecnología en mono; voz de instrumento sobre carbón.",
+      "html": "<span class=\"ds-chip\">Next.js</span>",
+      "css": ".ds-chip { display: inline-block; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; padding: 2px 10px; color: #94a3b8; font-family: \"Geist Mono\", ui-monospace, SFMono-Regular, monospace; font-size: 12px; line-height: 1.5; }"
+    },
+    {
+      "name": "Surface Card",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "Tarjeta estándar: carbón sólido, línea fina, acento superior de 2px, elevación solo en hover.",
+      "html": "<div class=\"ds-card\"><span class=\"ds-card-accent\"></span><h3 class=\"ds-card-title\">Frontend</h3><p class=\"ds-card-text\">TypeScript, React, Next.js</p></div>",
+      "css": ".ds-card { position: relative; overflow: hidden; background: #222222; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; } .ds-card:hover { border-color: rgba(255,77,46,0.4); box-shadow: 0 10px 15px -3px rgba(255,77,46,0.05); transform: translateY(-2px); } .ds-card-accent { position: absolute; inset: 0 0 auto 0; height: 2px; background: linear-gradient(90deg, rgba(255,77,46,0.8), rgba(255,77,46,0.1)); } .ds-card-title { font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 700; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 12px; } .ds-card-text { font-family: \"Geist Mono\", ui-monospace, monospace; font-size: 14px; color: #cbd5e1; margin: 0; line-height: 1.6; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo del modal de contacto: superficie blanca translúcida, foco con borde y ring del acento.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Tu nombre\" />",
+      "css": ".ds-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px 16px; color: #ffffff; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 14px; transition: border-color 0.2s ease, box-shadow 0.2s ease; } .ds-input::placeholder { color: #64748b; } .ds-input:focus { outline: none; border-color: rgba(255,77,46,0.5); box-shadow: 0 0 0 1px rgba(255,77,46,0.3); }"
+    },
+    {
+      "name": "Availability Status",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Badge de estado vivo: verde solo para presencia activa; pulso que respeta prefers-reduced-motion.",
+      "html": "<span class=\"ds-status\">Disponible</span>",
+      "css": ".ds-status { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 9999px; border: 1px solid rgba(74,222,128,0.2); background: rgba(74,222,128,0.05); color: #86efac; font-family: \"Geist Mono\", ui-monospace, monospace; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; } .ds-status::before { content: \"\"; width: 6px; height: 6px; border-radius: 9999px; background: #4ade80; animation: ds-pulse 2s ease-in-out infinite; } @keyframes ds-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.4); } } @media (prefers-reduced-motion: reduce) { .ds-status::before { animation: none; } }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Apertura de sección: headline Geist 900 + metadato mono de 10px.",
+      "html": "<div class=\"ds-heading\"><h2 class=\"ds-heading-title\">Tecnologías</h2><span class=\"ds-heading-meta\">CERTIFICACIONES &amp; INSIGNIAS</span></div>",
+      "css": ".ds-heading-title { font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 30px; font-weight: 900; color: #ffffff; line-height: 1.2; margin: 0; } .ds-heading-meta { font-family: \"Geist Mono\", ui-monospace, monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; }"
+    },
+    {
+      "name": "Timeline Node",
+      "kind": "custom",
+      "refersTo": "card-surface",
+      "description": "Nodos del timeline de experiencia: punto activo en el acento con ring, línea de 1px primaria y nodo inactivo apagado.",
+      "html": "<div class=\"ds-timeline\"><div class=\"ds-node ds-node-active\"></div><div class=\"ds-node ds-node-line\"></div><div class=\"ds-node\"></div></div>",
+      "css": ".ds-timeline { display: flex; flex-direction: column; align-items: center; } .ds-node { width: 8px; height: 8px; border-radius: 9999px; background: rgba(255,255,255,0.2); } .ds-node-active { background: #ff4d2e; box-shadow: 0 0 0 4px rgba(255,77,46,0.2); } .ds-node-line { width: 1px; height: 16px; background: rgba(255,77,46,0.3); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "El Espacio de Trabajo a Media Luz",
+    "overview": "El portafolio es un espacio de trabajo a oscuras, enfocado y cálido, donde una sola brasa naranja — el Rastro de Fuego — ilumina lo que importa: la acción y la señal. El fondo casi negro (ink-void) y las superficies de carbón (slate-surface) aportan el silencio; el acento encendido guía la mirada del reclutador hacia los puntos de decisión en vez de competir con ellos. Es el ambiente de un ingeniero que trabaja de noche con una luz precisa, no el escaparate de una agencia de marketing.\n\nLa densidad es media-alta pero ordenada: etiquetas técnicas en mono, líneas de borde finas (white/10), y tarjetas con acento superior en gradiente de 2px que separan secciones sin ruido. La tipografía Geist, con su corte limpio y letras técnicas, refuerza la credibilidad de ingeniería: títulos en negro pesado, metadatos en mono 10px en mayúsculas, y el acento reservado para CTA, foco, enlaces y líneas de timeline. Los estados hover son táctiles y nítidos — elevación sutil, borde que enciende, sombra cálida — nunca decoración gratuita.\n\nEl sistema rechaza explícitamente la estética genérica de SaaS: sin gradientes pesados, sin glassmorphism, sin sombras difusas de marketing ni plantillas. Cada superficie es un carbón sólido delimitado por una línea fina; la profundidad se construye por capas tonales y se confirma con sombras tintadas en el acento únicamente cuando el usuario interactúa.",
+    "keyCharacteristics": [
+      "Fondo casi negro (#181818) y superficies de carbón (#222222) con líneas de borde finas (white/5–white/10).",
+      "Un solo acento caliente (#ff4d2e) usado con parcimonia; rareza es su poder.",
+      "Metadatos y etiquetas en Geist Mono 10px, mayúsculas, tracking amplio — voz de instrumento.",
+      "Tarjetas con acento superior en gradiente de 2px como firma recurrente.",
+      "Estados hover nítidos y táctiles: elevación de 2px + sombra cálida.",
+      "Animación solo para señal (pulso de disponibilidad, carrusel) y respeta prefers-reduced-motion."
+    ],
+    "rules": [
+      { "name": "La Regla del Rastro de Fuego", "body": "El acento #ff4d2e se usa en ≤10% de cualquier pantalla. Su rareza es el punto: cuando enciende, es porque hay una acción que tomar o una señal que leer.", "section": "colors" },
+      { "name": "La Regla del Verde de Vida", "body": "El verde no es decorativo. Si algo no está vivo (disponible, en curso, verificado), no lo toca el verde.", "section": "colors" },
+      { "name": "La Regla de la Línea Fina", "body": "Los bordes entre superficies nunca superan 1px y usan white/5–white/10; la distinción de capas la hace el tono, no el grosor de la línea.", "section": "colors" },
+      { "name": "La Regla del Monómetro", "body": "Cualquier cosa que sea un dato — periodo, rol, tecnología, estado — se escribe en Geist Mono a 10–12px, mayúsculas y con tracking amplio. Si es copy, es Geist Sans. No se mezclan.", "section": "typography" },
+      { "name": "La Regla del Carbonizado", "body": "Las superficies son planas y sólidas en reposo. La elevación aparece solo como respuesta al hover, al foco o a la superposición real (modal/hero). Una tarjeta que 'flota' sin razón viola el sistema.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do usar el Rastro de Fuego para una sola intención por pantalla: la acción principal.",
+      "Do escribir metadatos y datos técnicos en Geist Mono 10–12px mayúsculas.",
+      "Do separar secciones con border-t border-white/5 y ritmo de 8px.",
+      "Do respetar prefers-reduced-motion: sin animación de disponibilidad ni transiciones de carrusel cuando el usuario lo pide.",
+      "Do mantener targets táctiles ≥44px (44px de alto mínimo en íconos y botones de icono).",
+      "Do usar el verde únicamente para estados vivos (disponible, en curso, verificado)."
+    ],
+    "donts": [
+      "Don't aplicar gradientes de fondo pesados ni glassmorphism en superficies de contenido.",
+      "Don't usar sombras grises difusas de marketing; la elevación es por capas tonales o sombra cálida en hover.",
+      "Don't llenar las tarjetas con el acento; la Regla del Rastro de Fuego (≤10%) se mantiene.",
+      "Don't mezclar copy en Geist Mono ni datos en Geist Sans dentro de la misma etiqueta.",
+      "Don't inventar componentes sin estado funcional; cada tarjeta, botón e input responde a una acción real."
+    ]
+  }
+}
