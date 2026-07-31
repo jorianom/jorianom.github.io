@@ -19,7 +19,7 @@ type EducationItem = {
 type DiplomaItem = {
     title: string;
     institution: string;
-    hours: string;
+    hours?: string;
     /**
      * Ruta al archivo del certificado dentro de /public/certificates/
      * Soporta imágenes (.webp, .png, .jpg) y PDFs (.pdf)
@@ -51,6 +51,11 @@ const diplomas: DiplomaItem[] = [
         institution: "Universidad Nacional de Colombia",
         hours: "192 h",
         certificate: "/certificates/software.pdf",
+    },
+    {
+        title: "GitHub Actions",
+        institution: "GitHub",
+        certificate: "/certificates/actions.pdf",
     },
 ];
 
@@ -181,9 +186,11 @@ export const Education = () => {
 
                                     {/* Footer: hours + certificate link */}
                                     <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/5">
-                                        <span className="text-[10px] text-slate-500 font-mono uppercase tracking-widest">
-                                            {item.hours}
-                                        </span>
+                                        {item.hours && (
+                                            <span className="text-[10px] text-slate-500 font-mono uppercase tracking-widest">
+                                                {item.hours}
+                                            </span>
+                                        )}
 
                                         {item.certificate ? (
                                             <button
@@ -193,7 +200,7 @@ export const Education = () => {
                                                         src: item.certificate!,
                                                     })
                                                 }
-                                                className="flex items-center gap-1.5 text-[11px] text-primary font-mono uppercase tracking-wider
+                                                className="ml-auto flex items-center gap-1.5 text-[11px] text-primary font-mono uppercase tracking-wider
                                    hover:text-white transition-colors cursor-pointer"
                                             >
                                                 <IoEyeOutline size={14} />
