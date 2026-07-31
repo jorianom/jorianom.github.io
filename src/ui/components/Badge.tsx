@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
-import { IoChevronBack, IoChevronForward } from "react-icons/io5";
+import { IoCheckmarkDone, IoChevronBack, IoChevronForward } from "react-icons/io5";
 
 interface CredlyBadge {
   id: string;
@@ -64,6 +64,9 @@ export default function Badge() {
   const [[page, direction], setPage] = useState([0, 1]);
   const [reducedMotion, setReducedMotion] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [paused, setPaused] = useState(false);
+  const [inView, setInView] = useState(true);
 
   useEffect(() => {
     const fetchBadges = async () => {
@@ -106,12 +109,12 @@ export default function Badge() {
     [totalPages]
   );
 
-  // Auto-slide
+  // Auto-slide — paused on hover/focus, offscreen, or reduced motion
   useEffect(() => {
-    if (totalPages <= 1) return;
+    if (totalPages <= 1 || reducedMotion || paused || !inView) return;
     const timer = setInterval(() => paginate(1), AUTO_PLAY_MS);
     return () => clearInterval(timer);
-  }, [paginate, totalPages]);
+  }, [paginate, totalPages, reducedMotion, paused, inView]);
 
   // Arrow-key navigation
   useEffect(() => {
@@ -138,6 +141,36 @@ export default function Badge() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
+  // Pause autoplay while the pointer hovers or focus stays inside the section
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const pause = () => setPaused(true);
+    const resume = () => setPaused(false);
+    section.addEventListener("mouseenter", pause);
+    section.addEventListener("mouseleave", resume);
+    section.addEventListener("focusin", pause);
+    section.addEventListener("focusout", resume);
+    return () => {
+      section.removeEventListener("mouseenter", pause);
+      section.removeEventListener("mouseleave", resume);
+      section.removeEventListener("focusin", pause);
+      section.removeEventListener("focusout", resume);
+    };
+  }, []);
+
+  // Stop autoplay while the carousel is offscreen
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   const currentBadges = badges.slice(
     page * ITEMS_PER_PAGE,
     page * ITEMS_PER_PAGE + ITEMS_PER_PAGE
@@ -158,7 +191,7 @@ export default function Badge() {
   };
 
   return (
-    <section className="py-20 border-t border-white/5">
+    <section className="py-20 border-t border-white/5" ref={sectionRef}>
       <div className="flex flex-col gap-10">
         {/* Header: título + controles */}
         <div className="flex items-end justify-between gap-4">
@@ -167,7 +200,8 @@ export default function Badge() {
               Certificaciones &amp; Insignias
             </h2>
             {!loading && (
-              <p className="text-xs text-slate-400 font-mono mt-2">
+              <p className="flex items-center gap-1.5 text-xs text-signal-green font-mono mt-2">
+                <IoCheckmarkDone className="h-3.5 w-3.5" aria-hidden="true" />
                 {badges.length} credenciales verificadas
               </p>
             )}
@@ -195,7 +229,7 @@ export default function Badge() {
 
         {loading ? (
           /* Skeleton */
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {Array.from({ length: ITEMS_PER_PAGE }).map((_, i) => (
               <div key={i} className="rounded-2xl bg-surface p-5 h-[216px] motion-safe:animate-pulse" />
             ))}
@@ -212,7 +246,7 @@ export default function Badge() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: reducedMotion ? 0 : 0.45, ease: [0.23, 1, 0.32, 1] }}
-                className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"
+                className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5"
               >
                 {currentBadges.map((badge, idx) => (
                   <motion.a
@@ -222,10 +256,19 @@ export default function Badge() {
                     rel="noopener noreferrer"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.08, duration: 0.35 }}
+                    transition={{
+                      delay: reducedMotion ? 0 : idx * 0.08,
+                      duration: reducedMotion ? 0 : 0.35,
+                    }}
                     className="group rounded-2xl"
                   >
-                    <div className="rounded-2xl bg-surface p-5 min-h-[216px] flex flex-col items-center gap-3 text-center h-full border border-white/10 group-hover:border-primary/30 transition-colors">
+                    <div className="relative rounded-2xl bg-surface p-5 min-h-[216px] flex flex-col items-center gap-3 text-center h-full border border-white/10 group-hover:border-primary/30 transition-colors">
+                      <span
+                        className="absolute top-3 right-3 flex h-5 w-5 items-center justify-center rounded-full bg-signal-green/10 text-signal-green"
+                        aria-hidden="true"
+                      >
+                        <IoCheckmarkDone className="h-3.5 w-3.5" />
+                      </span>
                       <div className="relative h-[100px] w-[100px]">
                         <Image
                           src={badge.imageUrl}
@@ -262,10 +305,10 @@ export default function Badge() {
                 className="flex h-11 min-w-11 items-center justify-center px-1 cursor-pointer"
               >
                 <span
-                  className={`block h-1.5 rounded-full transition-all duration-300 ${
+                  className={`block h-1.5 w-2 rounded-full transition-transform duration-300 ${
                     i === page
-                      ? "w-6 bg-primary"
-                      : "w-2 bg-white/20 hover:bg-white/40"
+                      ? "scale-x-[3] bg-primary"
+                      : "bg-white/20 hover:bg-white/40"
                   }`}
                 />
               </button>

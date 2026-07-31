@@ -7,6 +7,11 @@
   --color-bg-dark: #181818;
   --color-surface: #222222;
   --color-text-light: #ffffff;
+  --color-paper: #ffffff;
+  --color-mist: #cbd5e1;
+  --color-ash: #94a3b8;
+  --color-stone: #64748b;
+  --color-signal-green: #4ade80;
 }
 
 @theme inline {

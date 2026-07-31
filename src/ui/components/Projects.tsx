@@ -101,7 +101,7 @@ export const Projects = () => {
                                         </span>
                                     ))}
                                 </div>
-                                <span className="mt-1 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary group-hover:text-white transition-colors">
+                                <span className="mt-1 inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider text-primary group-hover:text-white transition-colors">
                                     Ver proyecto
                                     <span className="text-sm transition-transform duration-200 group-hover:translate-x-0.5">→</span>
                                 </span>

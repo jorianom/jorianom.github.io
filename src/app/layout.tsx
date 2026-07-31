@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "John Riaño | Portafolio",
+  title: "John Jairo Riaño Martinez | Portafolio",
   description:
     "Portafolio de John Jairo Riaño, estudiante de Ingeniería de Sistemas y desarrollador especializado en tecnologías como Node.js, React y MongoDB.",
   keywords: [

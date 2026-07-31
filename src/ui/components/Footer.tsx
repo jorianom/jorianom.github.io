@@ -15,28 +15,30 @@ const socialLinks = [
 export const Footer = () => {
   return (
     <footer className="border-t border-white/5 py-16">
-      <div className="flex flex-col items-center gap-5">
-        {/* Social icons */}
-        <div className="flex items-center gap-3">
-          {socialLinks.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={s.label}
-              className="flex h-11 w-11 items-center justify-center rounded-lg bg-white/5 border border-white/5
-                         text-slate-400 hover:text-primary hover:border-primary/30 hover:bg-primary/10
-                         transition-all"
-            >
-              <s.icon size={16} />
-            </a>
-          ))}
-        </div>
+      <div className="mx-auto w-full max-w-7xl px-6">
+        <div className="flex flex-col items-center gap-5">
+          {/* Social icons */}
+          <div className="flex items-center gap-3">
+            {socialLinks.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="flex h-11 w-11 items-center justify-center rounded-lg bg-white/5 border border-white/5
+                           text-slate-400 hover:text-primary hover:border-primary/30 hover:bg-primary/10
+                           transition-all"
+              >
+                <s.icon size={16} />
+              </a>
+            ))}
+          </div>
 
-        {/* Bottom line */}
-        <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
-          <span>&copy; {new Date().getFullYear()} John Riaño · Bogotá, Colombia</span>
+          {/* Bottom line */}
+          <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
+            <span>&copy; {new Date().getFullYear()} John Jairo Riaño Martinez · Bogotá, Colombia</span>
+          </div>
         </div>
       </div>
     </footer>

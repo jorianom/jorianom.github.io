@@ -26,8 +26,8 @@ const experiences = [
 
 export const Experience = () => {
   return (
-    <section className="py-16 border-t border-white/5" id="experience">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <section className="py-20 border-t border-white/5" id="experience">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
         {/* Left: heading */}
         <div className="lg:col-span-4">
           <h2 className="text-3xl font-black text-white">

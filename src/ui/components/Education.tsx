@@ -2,12 +2,13 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, MotionConfig } from "motion/react";
 import {
     IoSchoolOutline,
     IoDocumentTextOutline,
     IoCloseOutline,
     IoEyeOutline,
+    IoCheckmarkDone,
 } from "react-icons/io5";
 /* ── Types ─────────────────────────────────────────── */
 
@@ -44,7 +45,6 @@ const diplomas: DiplomaItem[] = [
         title: "Machine Learning and Data Science",
         institution: "Universidad Nacional de Colombia",
         hours: "192 h",
-        // Descomentar cuando el archivo exista en /public/certificates/
         certificate: "/certificates/analisis.pdf",
     },
     {
@@ -113,8 +113,8 @@ export const Education = () => {
 
     return (
         <>
-            <section className="py-16 border-t border-white/5" id="education">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <section className="py-20 border-t border-white/5" id="education">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
                     {/* ── Heading ─────────────────────────────── */}
                     <div className="lg:col-span-4">
                         <h2 className="text-3xl font-black text-white">Educación</h2>
@@ -130,7 +130,7 @@ export const Education = () => {
                         {education.map((item) => (
                             <div
                                 key={item.title}
-                                className="group relative rounded-xl bg-surface/60 border border-white/5
+                                className="group relative rounded-xl bg-surface border border-white/5
                            hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5
                            transition-all duration-300 overflow-hidden"
                             >
@@ -149,8 +149,8 @@ export const Education = () => {
                                             {item.institution}
                                         </p>
                                         {item.status && (
-                                            <span className="inline-flex items-center gap-1.5 mt-3 text-[10px] font-mono uppercase tracking-widest text-green-400 border border-green-400/30 rounded-full px-3 py-0.5">
-                                                <span className="h-1.5 w-1.5 rounded-full bg-green-400 motion-safe:animate-pulse" />
+                                            <span className="inline-flex items-center gap-1.5 mt-3 text-[10px] font-mono uppercase tracking-widest text-signal-green border border-signal-green/30 rounded-full px-3 py-0.5">
+                                                <span className="h-1.5 w-1.5 rounded-full bg-signal-green motion-safe:animate-pulse" />
                                                 {item.status}
                                             </span>
                                         )}
@@ -169,8 +169,8 @@ export const Education = () => {
                             {diplomas.map((item) => (
                                 <div
                                     key={item.title}
-                                    className="group relative overflow-hidden rounded-xl bg-surface/40 border border-white/5 p-5
-                             hover:border-primary/40 hover:bg-surface/70 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5
+                                    className="group relative overflow-hidden rounded-xl bg-surface border border-white/5 p-5
+                             hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5
                              transition-all duration-300"
                                 >
                                     {/* Signature top bar */}
@@ -192,13 +192,19 @@ export const Education = () => {
 
                                     {/* Footer: hours + certificate link */}
                                     <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/5">
-                                        {item.hours && (
-                                            <span className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">
-                                                {item.hours}
+                                        <div className="flex items-center gap-2">
+                                            {item.hours && (
+                                                <span className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">
+                                                    {item.hours}
+                                                </span>
+                                            )}
+                                            <span className="flex items-center gap-1 text-[10px] font-mono uppercase tracking-widest text-signal-green">
+                                                <IoCheckmarkDone className="h-3 w-3" aria-hidden="true" />
+                                                Verificado
                                             </span>
-                                        )}
+                                        </div>
 
-                                        {item.certificate ? (
+                                        {item.certificate && (
                                             <button
                                                 onClick={() =>
                                                     setViewer({
@@ -212,11 +218,6 @@ export const Education = () => {
                                                 <IoEyeOutline size={14} />
                                                 Ver certificado
                                             </button>
-                                        ) : (
-                                            //   <span className="text-[11px] text-slate-600 font-mono uppercase tracking-wider">
-                                            //     Próximamente
-                                            //   </span>
-                                            null
                                         )}
                                     </div>
                                 </div>
@@ -228,6 +229,7 @@ export const Education = () => {
 
             {/* ── Certificate viewer modal ───────────────── */}
             {viewer && (
+                <MotionConfig reducedMotion="user">
                 <motion.div
                     ref={modalRef}
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
@@ -283,6 +285,7 @@ export const Education = () => {
                         </div>
                     </motion.div>
                 </motion.div>
+                </MotionConfig>
             )}
         </>
     );

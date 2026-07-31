@@ -16,7 +16,7 @@ const services: Service[] = [
         number: "01",
         tag: "Desarrollo web",
         title: "De idea a producto funcional",
-        claim: "Sin intermediarios. Sin features a medias.",
+        claim: "Sin intermediarios. Sin funciones a medias.",
         description:
             "Tomo una idea y la convierto en una aplicación real: arquitectura, código, base de datos y despliegue. Responsabilidad completa de principio a fin.",
         techs: ["Next.js", "Node.js", "PostgreSQL", "Vercel"],

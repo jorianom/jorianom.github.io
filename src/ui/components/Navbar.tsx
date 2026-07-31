@@ -58,7 +58,7 @@ export const Navbar = () => {
     }, []);
 
     const linkClass = (href: string) =>
-        `text-sm font-medium transition-colors ${
+        `inline-flex items-center py-2.5 text-sm font-medium transition-colors ${
             activeSection === href.slice(1)
                 ? "text-primary"
                 : "text-white hover:text-primary"
@@ -77,8 +77,8 @@ export const Navbar = () => {
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
                             <IoTerminal className="h-5 w-5" />
                         </div>
-                        <div className="flex flex-col">
-                            <span className="text-lg font-bold leading-none tracking-tight text-white">
+                        <div className="flex min-w-0 flex-col">
+                            <span className="truncate text-lg font-bold leading-none tracking-tight text-white">
                                 John Jairo Riaño Martinez
                             </span>
                             <span className="font-mono text-[10px] uppercase tracking-widest text-slate-400">
@@ -108,14 +108,16 @@ export const Navbar = () => {
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className="md:hidden text-white p-2.5"
-                        aria-label="Abrir menú"
+                        aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+                        aria-expanded={isOpen}
+                        aria-controls="mobile-menu"
                     >
                         {isOpen ? <IoClose className="h-6 w-6" /> : <IoMenu className="h-6 w-6" />}
                     </button>
                 </div>
 
                 {isOpen && (
-                    <nav className="md:hidden border-t border-white/5 bg-bg-dark/95 backdrop-blur-md px-6 pb-4">
+                    <nav id="mobile-menu" className="md:hidden border-t border-white/5 bg-bg-dark/95 backdrop-blur-md px-6 pb-4">
                         <div className="flex flex-col gap-3 pt-3">
                             {navLinks.map((link) => (
                                 <Link
@@ -141,7 +143,7 @@ export const Navbar = () => {
             <button
                 onClick={scrollToTop}
                 aria-label="Volver al inicio"
-                className={`fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:bg-primary-hover ${
+                className={`fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-primary text-bg-dark shadow-lg shadow-primary/20 transition-all duration-300 hover:bg-primary-hover ${
                     showBackToTop
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-4 pointer-events-none"

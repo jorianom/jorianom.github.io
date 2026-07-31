@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, MotionConfig } from "motion/react";
 import { IoCloseOutline, IoSendOutline } from "react-icons/io5";
 
 /* ── Types ─────────────────────────────────────────── */
@@ -19,20 +19,51 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   const [formState, setFormState] = useState<FormState>("idle");
   const formRef = useRef<HTMLFormElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previouslyFocused = useRef<HTMLElement | null>(null);
 
-  /* Focus first field on open */
+  /* Focus first field on open, lock scroll, restore focus on close */
   useEffect(() => {
     if (isOpen) {
+      previouslyFocused.current = document.activeElement as HTMLElement | null;
       setFormState("idle");
+      document.body.style.overflow = "hidden";
       requestAnimationFrame(() => nameRef.current?.focus());
+
+      return () => {
+        document.body.style.overflow = "";
+        previouslyFocused.current?.focus();
+      };
     }
   }, [isOpen]);
 
-  /* Close on Escape */
+  /* Escape to close + Tab focus trap */
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      if (e.key === "Tab" && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
+
     if (isOpen) window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [isOpen, onClose]);
@@ -78,6 +109,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   };
 
   return (
+    <MotionConfig reducedMotion="user">
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
@@ -93,6 +125,10 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
           {/* Modal */}
           <motion.div
+            ref={modalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-modal-title"
             className="relative w-full max-w-lg rounded-2xl border border-white/10 bg-surface shadow-2xl shadow-black/50 overflow-hidden"
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -102,7 +138,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-white/5">
               <div>
-                <h3 className="text-lg font-bold text-white">Contáctame</h3>
+                <h3 id="contact-modal-title" className="text-lg font-bold text-white">Contáctame</h3>
                 <p className="text-xs text-slate-400 font-mono mt-0.5">
                   Freelance · Ofertas · Colaboración
                 </p>
@@ -131,8 +167,8 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                   type="text"
                   required
                   placeholder="Tu nombre"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white
-                             placeholder:text-slate-500 outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white
+                             placeholder:text-slate-400 outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
                              transition-all"
                 />
               </div>
@@ -148,8 +184,8 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                   type="email"
                   required
                   placeholder="correo@ejemplo.com"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white
-                             placeholder:text-slate-500 outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white
+                             placeholder:text-slate-400 outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
                              transition-all"
                 />
               </div>
@@ -163,7 +199,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                   id="contact-type"
                   name="type"
                   defaultValue="freelance"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white
                              outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
                              transition-all cursor-pointer appearance-none"
                 >
@@ -185,8 +221,8 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                   required
                   rows={3}
                   placeholder="Cuéntame brevemente sobre tu proyecto..."
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white
-                             placeholder:text-slate-500 outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white
+                             placeholder:text-slate-400 outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
                              transition-all resize-none"
                 />
               </div>
@@ -225,5 +261,6 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
         </div>
       )}
     </AnimatePresence>
+    </MotionConfig>
   );
 };

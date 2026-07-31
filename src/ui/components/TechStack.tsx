@@ -33,9 +33,14 @@ const categories: Category[] = [
 export const TechStack = () => {
     return (
         <section className="py-20 border-t border-white/5">
-            <h2 className="mb-8 text-3xl font-black text-white">
-                Tecnologías
-            </h2>
+            <div className="mb-10 flex flex-col gap-2">
+                <h2 className="text-3xl font-black text-white">
+                    Tecnologías
+                </h2>
+                <p className="text-sm text-slate-400 max-w-lg">
+                    El stack con el que construyo de principio a fin.
+                </p>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {categories.map((cat) => {
                     const Icon = cat.icon;
@@ -49,7 +54,7 @@ export const TechStack = () => {
 
                             <div className="flex items-start justify-between gap-4">
                                 <div className="flex flex-col gap-3">
-                                    <h3 className="text-xs uppercase tracking-widest text-slate-300 font-bold">
+                                    <h3 className="font-mono text-[10px] uppercase tracking-widest text-slate-300 font-bold">
                                         {cat.title}
                                     </h3>
                                     <p className="text-slate-300 text-sm font-mono leading-relaxed">
