@@ -5,6 +5,7 @@ import { Projects } from "@/ui/components/Projects";
 import { Services } from "@/ui/components/Services";
 import { Experience } from "@/ui/components/Experience";
 import { Education } from "@/ui/components/Education";
+import { HowIWork } from "@/ui/components/HowIWork";
 import { CtaSection } from "@/ui/components/CtaSection";
 import { Footer } from "@/ui/components/Footer";
 import Badge from "@/ui/components/Badge";
@@ -27,6 +28,7 @@ export default function Home() {
         <TechStack />
         <Education />
         <Badge />
+        <HowIWork />
         <CtaSection />
       </main>
       <Footer />

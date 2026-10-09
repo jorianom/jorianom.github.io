@@ -6,7 +6,7 @@ export const AvailabilityBadge = () => {
             <span className="availability-badge-dot">
                 <FaCircle className="w-2.5 h-2.5 text-signal-green" />
             </span>
-            <span>Disponibilidad inmediata</span>
+            <span>Abierto a proyectos y nuevas oportunidades</span>
         </div>
     );
 };

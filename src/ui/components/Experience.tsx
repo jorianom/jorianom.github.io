@@ -60,7 +60,7 @@ export const Experience = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-px h-4 bg-primary/30 ml-[3px]" />
-                    <span className="text-[10px] text-accent font-mono uppercase tracking-wider">Promoción interna</span>
+                    {/* <span className="text-[10px] text-accent font-mono uppercase tracking-wider">Promoción interna</span> */}
                   </div>
                   <div className="flex items-start gap-2">
                     <div className="flex flex-col items-center mt-[3px]">

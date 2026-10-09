@@ -14,37 +14,37 @@ type Service = {
 const services: Service[] = [
     {
         number: "01",
-        tag: "Desarrollo web",
+        tag: "Desarrollo de aplicaciones",
         title: "De idea a producto funcional",
         claim: "Sin intermediarios. Sin funciones a medias.",
         description:
-            "Tomo una idea y la convierto en una aplicación real: arquitectura, código, base de datos y despliegue. Responsabilidad completa de principio a fin.",
+            "De la idea a una aplicación funcionando: base de datos, servidor, interfaz y despliegue en la nube, con un solo responsable.",
         techs: ["Next.js", "Node.js", "PostgreSQL", "Vercel"],
         icon: IoCodeSlash,
     },
     {
         number: "02",
-        tag: "Integraciones",
+        tag: "Integración de sistemas",
         title: "Sistemas que se hablan entre sí",
         claim: "Datos consistentes, sin copiar y pegar.",
         description:
-            "APIs REST y conectores que sincronizan ERPs, CRMs y plataformas externas. Experiencia real con NetSuite y entornos corporativos con múltiples fuentes de datos.",
+            "Conecto ERPs (como NetSuite), CRMs y plataformas externas con APIs REST para que la información sea consistente en toda la operación.",
         techs: ["REST APIs", "Node.js", ".NET", "Go", "NetSuite"],
         icon: IoGitNetworkOutline,
     },
     {
         number: "03",
-        tag: "Automatización",
+        tag: "Automatización de procesos",
         title: "Procesos que corren solos",
         claim: "Un script bien hecho ahorra semanas de trabajo.",
         description:
-            "Automatizo flujos repetitivos: sincronización de datos, reportes programados, pipelines de CI/CD y disparadores de negocio sobre plataformas existentes.",
+            "Reportes que se generan y se envían solos, datos que pasan de un sistema a otro sin copiar y pegar, menos errores manuales.",
         techs: ["JavaScript", "Python", "GitHub Actions", "AWS Lambda"],
         icon: IoFlashOutline,
     },
     {
         number: "04",
-        tag: "Consultoría",
+        tag: "Consultoría técnica",
         title: "Segunda opinión técnica",
         claim: "Antes de construir, asegúrate de construir lo correcto.",
         description:
@@ -62,7 +62,7 @@ export const Services = () => {
                 <div className="flex flex-col gap-2">
                     <h2 className="text-3xl font-black text-white">Servicios</h2>
                     <p className="text-sm text-slate-400 max-w-lg">
-                        Lo que construyo para proyectos que necesitan pasar de boceto a producto real.
+                        Para negocios y equipos que necesitan pasar de la idea a algo que funcione.
                     </p>
                 </div>
 
