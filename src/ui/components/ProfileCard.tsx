@@ -21,18 +21,18 @@ export const ProfileCard = () => {
 
                     {/* Role, seniority, location */}
                     <p className="font-mono text-xs tracking-widest text-slate-400">
-                        Desarrollador Full Stack · 5+ años · Bogotá, Colombia
+                        Desarrollador Full Stack · Integraciones y automatización · 5+ años · Bogotá
                     </p>
 
                     {/* Headline */}
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter leading-tight text-white text-center sm:text-left">
-                        Construyo productos digitales <br className="hidden sm:block" />
+                        Construyo software que automatiza procesos y conecta sistemas,{" "}
                         <span className="text-primary">de principio a fin.</span>
                     </h1>
 
                     {/* Description */}
                     <p className="text-slate-300 max-w-2xl text-sm lg:text-base leading-relaxed font-medium text-center sm:text-left">
-                        Desarrollo software de extremo a extremo, desde interfaces con TypeScript, React y Next.js hasta APIs e integraciones con Node.js, .NET y Go, pasando por bases de datos SQL y NoSQL e infraestructura en AWS.
+                        Desarrollador Full Stack en Siigo. Ayudo a negocios a dejar de hacer tareas a mano y a equipos a integrar y hacer crecer sus sistemas, desde el código y la base de datos hasta el despliegue.
                     </p>
 
                     {/* Social icons */}

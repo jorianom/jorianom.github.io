@@ -21,10 +21,10 @@ export default function Home() {
       <Navbar />
       <main id="main-content" className="mx-auto w-full max-w-7xl px-6">
         <ProfileCard />
-        <TechStack />
         <Projects />
         <Services />
         <Experience />
+        <TechStack />
         <Education />
         <Badge />
         <CtaSection />

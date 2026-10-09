@@ -32,36 +32,34 @@ const categories: Category[] = [
 
 export const TechStack = () => {
     return (
-        <section className="py-20 border-t border-white/5">
-            <div className="mb-10 flex flex-col gap-2">
+        <section className="py-14 border-t border-white/5">
+            <div className="mb-6 flex flex-col gap-2">
                 <h2 className="text-3xl font-black text-white">
-                    Tecnologías
+                    Stack técnico
                 </h2>
                 <p className="text-sm text-slate-400 max-w-lg">
-                    El stack con el que construyo de principio a fin.
+                    Las tecnologías con las que construyo aplicaciones e integraciones, de la interfaz a la nube.
                 </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {categories.map((cat) => {
                     const Icon = cat.icon;
                     return (
                         <div
                             key={cat.title}
-                            className="group relative overflow-hidden rounded-xl border border-white/10 bg-surface p-6 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
+                            className="group relative flex items-start gap-3 overflow-hidden rounded-lg border border-white/5 bg-surface px-4 py-3 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
                         >
                             {/* Signature top bar */}
                             <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary/80 to-primary/10" />
 
-                            <div className="flex items-start justify-between gap-4">
-                                <div className="flex flex-col gap-3">
-                                    <h3 className="font-mono text-[10px] uppercase tracking-widest text-slate-300 font-bold">
-                                        {cat.title}
-                                    </h3>
-                                    <p className="text-slate-300 text-sm font-mono leading-relaxed">
-                                        {cat.techs}
-                                    </p>
-                                </div>
-                                <Icon className="h-8 w-8 shrink-0 text-slate-400 opacity-60 transition-all group-hover:text-primary group-hover:opacity-100" />
+                            <Icon className="mt-0.5 h-4 w-4 shrink-0 text-slate-400 opacity-60 transition-all group-hover:text-primary group-hover:opacity-100" />
+                            <div className="flex flex-col gap-1">
+                                <h3 className="font-mono text-[10px] uppercase tracking-widest text-slate-300 font-bold">
+                                    {cat.title}
+                                </h3>
+                                <p className="text-slate-400 text-xs font-mono leading-relaxed">
+                                    {cat.techs}
+                                </p>
                             </div>
                         </div>
                     );
