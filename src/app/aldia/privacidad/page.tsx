@@ -245,6 +245,16 @@ export default function AldiaPrivacidad() {
               "La app no solicita permisos innecesarios; los permisos que usa se detallan en la sección 8.",
             ]}
           />
+          <P>
+            Para el detalle de cada paso, consultá la{" "}
+            <a
+              href="/aldia/eliminar-datos"
+              style={{ color: COLORS.primaryDark, textDecoration: "underline" }}
+            >
+              guía de eliminación de datos
+            </a>
+            .
+          </P>
         </Section>
 
         {/* 7 */}
@@ -260,6 +270,16 @@ export default function AldiaPrivacidad() {
               "Supresión: borrá registros desde la app o eliminá la aplicación por completo.",
             ]}
           />
+          <P>
+            Para una guía paso a paso, consultá la{" "}
+            <a
+              href="/aldia/eliminar-datos"
+              style={{ color: COLORS.primaryDark, textDecoration: "underline" }}
+            >
+              página de eliminación de datos
+            </a>
+            .
+          </P>
           <P>
             Para cualquier consulta o solicitud, escribinos a{" "}
             <a
@@ -375,6 +395,13 @@ export default function AldiaPrivacidad() {
               style={{ color: COLORS.primaryDark, textDecoration: "none" }}
             >
               Volver a AlDía
+            </a>{" "}
+            ·{" "}
+            <a
+              href="/aldia/eliminar-datos"
+              style={{ color: COLORS.primaryDark, textDecoration: "none" }}
+            >
+              Eliminación de datos
             </a>{" "}
             ·{" "}
             <a

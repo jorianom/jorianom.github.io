@@ -309,6 +309,13 @@ export default function AldiaLanding() {
               style={{ color: COLORS.primary, textDecoration: "none" }}
             >
               Política de privacidad
+            </a>{" "}
+            ·{" "}
+            <a
+              href="/aldia/eliminar-datos"
+              style={{ color: COLORS.primary, textDecoration: "none" }}
+            >
+              Eliminación de datos
             </a>
           </p>
         </section>
