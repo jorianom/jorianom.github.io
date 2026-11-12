@@ -143,13 +143,13 @@ export default function AldiaPrivacidad() {
           <P>
             AlDía <strong>no recopila ni almacena tus datos en servidores propios
             ni de terceros</strong> para su funcionamiento. Toda la información que
-            creás se guarda <strong>únicamente en tu dispositivo</strong> (en la
+            creas se guarda <strong>únicamente en tu dispositivo</strong> (en la
             base de datos local del celular).
           </P>
-          <P>Esta información es la que vos ingresás voluntariamente:</P>
+          <P>Esta información es la que tú ingresas voluntariamente:</P>
           <Ul
             items={[
-              "Deudas propias: persona o entidad a la que debés, monto, fecha de vencimiento, recurrencia y estado.",
+              "Deudas propias: persona o entidad a la que debes, monto, fecha de vencimiento, recurrencia y estado.",
               "Fiados / saldos por cobrar: clientes o personas que te deben, movimientos de deuda y de pago, saldo y fechas.",
               "Preferencias de la app: recordatorios (días de anticipación, hora), preferencias de notificaciones y estado del tutorial/onboarding.",
             ]}
@@ -157,7 +157,7 @@ export default function AldiaPrivacidad() {
           <P>
             Datos técnicos del dispositivo (modelo, versión de Android){" "}
             <strong>no se recopilan automáticamente</strong>: solo se usan
-            puntualmente cuando vos mismo generás un reporte de error (ver sección 4).
+            puntualmente cuando tú mismo generas un reporte de error (ver sección 4).
           </P>
         </Section>
 
@@ -165,7 +165,7 @@ export default function AldiaPrivacidad() {
         <Section title="3. Información que se envía a terceros (Gemini / Google AI)">
           <P>
             AlDía tiene una función de <strong>&quot;Entrada rápida&quot;</strong>{" "}
-            que interpreta en español frases que describís, por ejemplo:{" "}
+            que interpreta en español frases que describes, por ejemplo:{" "}
             <em>&quot;Le presté 50 mil a Pedro&quot;</em>. La interpretación se
             resuelve primero con reglas locales en tu dispositivo.
           </P>
@@ -180,7 +180,7 @@ export default function AldiaPrivacidad() {
           </P>
           <Ul
             items={[
-              "Ocurre únicamente en el momento en que usás la entrada rápida y las reglas locales fallan.",
+              "Ocurre únicamente en el momento en que usas la entrada rápida y las reglas locales fallan.",
               "No envía tu lista de deudas, contactos, ni ningún otro dato del dispositivo.",
               "Está sujeta a la política de privacidad de Google.",
             ]}
@@ -191,7 +191,7 @@ export default function AldiaPrivacidad() {
             </Link>
           </P>
           <P>
-            Si no usás la entrada rápida con Gemini,{" "}
+            Si no usas la entrada rápida con Gemini,{" "}
             <strong>no se envía ninguna información a Google ni a ningún otro
             servicio</strong>.
           </P>
@@ -200,12 +200,12 @@ export default function AldiaPrivacidad() {
         {/* 4 */}
         <Section title="4. Reporte de errores (envío manual)">
           <P>
-            Si la app muestra un error, podés optar por{" "}
+            Si la app muestra un error, puedes optar por{" "}
             <strong>enviar un reporte</strong> al desarrollador. Ese envío:
           </P>
           <Ul
             items={[
-              "Es totalmente voluntario y lo iniciás vos desde el diálogo de error.",
+              "Es totalmente voluntario y lo inicias tú desde el diálogo de error.",
               "Se hace con el compartir del sistema (email, WhatsApp u otra app que elijas), nunca en segundo plano.",
               "Incluye: descripción del error, datos técnicos del dispositivo (marca, modelo, versión de Android, versión de la app) y, opcionalmente, contexto del error.",
             ]}
@@ -222,7 +222,7 @@ export default function AldiaPrivacidad() {
             items={[
               "Deudas y fiados: se muestran en pantalla (resumen, gestión, vencimientos), se usan para programar recordatorios locales y para el widget de la pantalla de inicio de Android. Nada de esto sale del dispositivo.",
               "Notificaciones: los recordatorios se generan y muestran localmente desde el celular.",
-              "Interpretación por Gemini: solo para estructurar la frase que escribís (sección 3).",
+              "Interpretación por Gemini: solo para estructurar la frase que escribes (sección 3).",
             ]}
           />
           <P>
@@ -246,7 +246,7 @@ export default function AldiaPrivacidad() {
             ]}
           />
           <P>
-            Para el detalle de cada paso, consultá la{" "}
+            Para el detalle de cada paso, consulta la{" "}
             <a
               href="/aldia/eliminar-datos"
               style={{ color: COLORS.primaryDark, textDecoration: "underline" }}
@@ -261,17 +261,17 @@ export default function AldiaPrivacidad() {
         <Section title="7. Sus derechos (Ley 1581 de 2012, Colombia)">
           <P>
             Dado que tus datos residen en tu propio dispositivo y no en servidores,
-            podés ejercer tus derechos directamente:
+            puedes ejercer tus derechos directamente:
           </P>
           <Ul
             items={[
-              "Acceso: revisá tus datos dentro de la app.",
-              "Rectificación / actualización: editá cualquier deuda o fiado desde la app.",
-              "Supresión: borrá registros desde la app o eliminá la aplicación por completo.",
+              "Acceso: revisa tus datos dentro de la app.",
+              "Rectificación / actualización: edita cualquier deuda o fiado desde la app.",
+              "Supresión: borra registros desde la app o elimina la aplicación por completo.",
             ]}
           />
           <P>
-            Para una guía paso a paso, consultá la{" "}
+            Para una guía paso a paso, consulta la{" "}
             <a
               href="/aldia/eliminar-datos"
               style={{ color: COLORS.primaryDark, textDecoration: "underline" }}
@@ -281,7 +281,7 @@ export default function AldiaPrivacidad() {
             .
           </P>
           <P>
-            Para cualquier consulta o solicitud, escribinos a{" "}
+            Para cualquier consulta o solicitud, escríbenos a{" "}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               style={{ color: COLORS.primaryDark, textDecoration: "underline" }}
@@ -338,7 +338,7 @@ export default function AldiaPrivacidad() {
                     Notificaciones
                   </td>
                   <td style={{ padding: "12px 16px" }}>
-                    Mostrar los recordatorios de vencimiento que programás vos
+                    Mostrar los recordatorios de vencimiento que programas tú
                   </td>
                 </tr>
                 <tr style={{ borderTop: `1px solid ${COLORS.surfaceDark}` }}>
@@ -376,7 +376,7 @@ export default function AldiaPrivacidad() {
         {/* 10 */}
         <Section title="10. Contacto">
           <P>
-            Si tenés preguntas sobre esta política o sobre el manejo de tu
+            Si tienes preguntas sobre esta política o sobre el manejo de tu
             información:
           </P>
           <Ul

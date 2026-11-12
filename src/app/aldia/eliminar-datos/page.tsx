@@ -313,7 +313,7 @@ export default function AldiaEliminarDatos() {
 
           <Section title="1. Borrar registros dentro de la app">
             <P>
-              Podés eliminar los datos directamente desde AlDía, sin solicitar nada
+              Puedes eliminar los datos directamente desde AlDía, sin solicitar nada
               al desarrollador.
             </P>
             <ol
@@ -329,25 +329,25 @@ export default function AldiaEliminarDatos() {
               <StepCard
                 number={1}
                 title="Deudas"
-                path="Gestión → Yo debo → elegí la deuda → Eliminar"
+                path="Gestión → Yo debo → elige la deuda → Eliminar"
                 note="La deuda se borra del dispositivo."
               />
               <StepCard
                 number={2}
                 title="Fiados / saldos por cobrar"
-                path="Gestión → Me deben → abrí el cliente → eliminá movimientos o el cliente"
+                path="Gestión → Me deben → abre el cliente → elimina movimientos o el cliente"
                 note="Algunos registros se archivan."
               />
               <StepCard
                 number={3}
                 title="Servicios propios"
-                path="Servicios → abrí el servicio → Eliminar"
+                path="Servicios → abre el servicio → Eliminar"
                 note="Se elimina el servicio propio que hayas creado."
               />
               <StepCard
                 number={4}
                 title="Notificaciones"
-                path="Ajustes → desactivá los recordatorios"
+                path="Ajustes → desactiva los recordatorios"
                 note="Se cancelan las notificaciones programadas."
               />
             </ol>
@@ -374,8 +374,8 @@ export default function AldiaEliminarDatos() {
 
           <Section title="3. Solicitar la eliminación por correo">
             <P>
-              Si querés que el desarrollador elimine datos que haya recibido (por
-              ejemplo, un reporte de error que enviaste por correo), escribí a{" "}
+              Si quieres que el desarrollador elimine datos que haya recibido (por
+              ejemplo, un reporte de error que enviaste por correo), escribe a{" "}
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 style={{ color: COLORS.primaryDark, textDecoration: "underline" }}
@@ -490,7 +490,7 @@ export default function AldiaEliminarDatos() {
               <Link href="https://policies.google.com/privacy">
                 https://policies.google.com/privacy
               </Link>
-              ). Para solicitar la eliminación de esos datos, contactá a Google.
+              ). Para solicitar la eliminación de esos datos, contacta a Google.
             </P>
 
             <h3 style={{ margin: "24px 0 8px", fontSize: "1.05rem", fontWeight: 800, color: COLORS.text }}>
@@ -505,7 +505,7 @@ export default function AldiaEliminarDatos() {
           <Section title="5. Contacto">
             <P>
               Para consultas sobre la eliminación de datos o sobre el manejo de tu
-              información, escribí a:
+              información, escribe a:
             </P>
             <div
               style={{
